@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekter — Heidi Desire Kristoffersen</title>
-    <meta name="description" content="Igangværende projekter: DUF, Mikromod og Bohemi Flow.">
+    <meta name="description" content="Igangværende projekter — DUF, Bohemi og Mikromod — samt mindre projekter fra studiet.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <a href="index.html">Forside</a>
                 <a href="rejsen.html">Rejsen</a>
                 <a href="case-studies/index.html">Case studies</a>
-                <a href="projekter.html" class="active">Projekter</a>
+                <a href="projekter.html" class="active" aria-current="page">Projekter</a>
                 <a href="ai-log.html">AI log</a>
                 <a href="om-mig.html">Om mig</a>
             </nav>
@@ -34,18 +34,75 @@
         </header>
 
         <main class="main main-static">
-            <p class="eyebrow">Iværksætteri</p>
-            <h1 class="title">Igangværende projekter</h1>
-            <p class="manifest">DUF, Mikromod og Bohemi Flow — det jeg bygger lige nu som selvstændig. Her får hvert projekt sin egen linje fra start, over proces, til det mål jeg arbejder hen imod.</p>
-
-            <span class="stub-badge" style="position: relative;">
-                Under opbygning
+            <p class="eyebrow" style="position: relative; display: inline-block;">
+                Iværksætteri
                 <span class="hotspot" style="left: 100%; top: 50%; margin-left: 14px; transform: translateY(-50%);">
                     <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
                     <span class="hotspot-marker" aria-hidden="true"></span>
                     <span class="hotspot-reveal">Et lille fund — slå JavaScript til for at se det.</span>
                 </span>
-            </span>
+            </p>
+            <h1 class="title">Projekter</h1>
+            <p class="manifest">Det jeg bygger lige nu som selvstændig — tre projekter, der hver især er et skridt mod at gøre det lettere for flere at skabe noget selv. Og længere nede: de små ting, jeg har kodet undervejs, bare fordi jeg kunne.</p>
+
+            <!-- ============ Igangværende projekter ============ -->
+            <section class="project-section" aria-labelledby="igangvaerende">
+                <div class="section-head">
+                    <h2 class="section-title" id="igangvaerende">Igangværende</h2>
+                    <span class="semester-status">3 projekter</span>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-card is-forsta">
+                        <div class="project-card-top">
+                            <span class="project-card-label">01 · Iværksætter · med Marcus &amp; Sophia</span>
+                            <span class="project-status is-live">Live</span>
+                        </div>
+                        <h3 class="project-card-title">DUF — Din Ugentlige Fridag</h3>
+                        <p class="project-card-text">Et digitalt læringshus for alternative behandlere. Emnebaserede vækstrum, bygget med branching i JavaScript, der i små, overskuelige skridt klæder behandlere på til at bygge en bæredygtig praksis — fra produktpakke og branding til alt det, der ligger imellem.</p>
+                        <p class="project-card-role"><span>Min rolle</span> Indhold, digital strategi, konvertering og overordnet ledelse</p>
+                        <a class="case-link" href="https://din-uf.dk" target="_blank" rel="noopener">→ Besøg din-uf.dk<span class="sr-only"> (åbner i nyt vindue)</span></a>
+                    </article>
+
+                    <article class="project-card is-forbind">
+                        <div class="project-card-top">
+                            <span class="project-card-label">02 · Entrepreneur</span>
+                            <span class="project-status">Kommer snart</span>
+                        </div>
+                        <h3 class="project-card-title">Bohemi</h3>
+                        <p class="project-card-text">[UDKAST — Heidi retter] Et knudepunkt for behandlere, der bare vil behandle. Bohemi tager sig af det, der ligger udenom — branding, administration, booking og aflønning — så behandleren kan bruge sin energi dér, hvor den gør mest gavn.</p>
+                        <span class="project-pending">Kommer snart-side under opbygning</span>
+                    </article>
+
+                    <article class="project-card is-forme">
+                        <div class="project-card-top">
+                            <span class="project-card-label">03 · Entrepreneur</span>
+                            <span class="project-status">Kommer snart</span>
+                        </div>
+                        <h3 class="project-card-title">Mikromod</h3>
+                        <p class="project-card-text">[UDKAST — Heidi skriver] Kort beskrivelse af idéen bag Mikromod.</p>
+                        <span class="project-pending">mikromod.dk — kommer snart-side under opbygning</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ============ Mindre projekter ============ -->
+            <section class="project-section" aria-labelledby="mindre">
+                <div class="section-head">
+                    <h2 class="section-title" id="mindre">Mindre projekter</h2>
+                    <span class="semester-status">Små eksperimenter</span>
+                </div>
+                <p class="section-intro">Små ting, jeg har lavet undervejs i studiet — for at lege med koden og prøve noget af.</p>
+
+                <div class="case-grid">
+                    <a class="case-card" href="https://heididesire.dk/julekort/" target="_blank" rel="noopener">
+                        <span class="case-card-label">Kodet julekort · HTML &amp; CSS</span>
+                        <div class="case-card-title">Julekort</div>
+                        <p class="case-card-text">Et digitalt julekort med en stille hilsen til dem, der bærer på mere, end man kan se — om julens lys, der også kan finde vej ind i mørket.</p>
+                        <span class="case-card-arrow">→ Åbn julekortet<span class="sr-only"> (åbner i nyt vindue)</span></span>
+                    </a>
+                </div>
+            </section>
 
             <a class="back-link" href="rejsen.html">← Tilbage til rejsen</a>
         </main>
