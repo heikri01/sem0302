@@ -1605,6 +1605,13 @@ a { color: inherit; }
   object-position: top center;
 }
 
+/* Stående skærmbilleder (fx chatbot-trinene i Cybersikker) får samme
+   format, så rækken står lige, selvom de originale skærmbilleder
+   har lidt forskellig højde */
+.img-sequence.is-portrait .img-photo {
+  aspect-ratio: 4 / 5;
+}
+
 .img-sequence-item .step-num {
   width: auto;
   display: block;

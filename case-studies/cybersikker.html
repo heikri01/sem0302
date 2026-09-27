@@ -102,7 +102,7 @@
                 <h2 class="spread-title">Idéen, der ikke blev til noget<span class="hotspot is-inline">
                         <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
                         <span class="hotspot-marker" aria-hidden="true"></span>
-                        <span class="hotspot-reveal">Fund #6 — placeholder.</span>
+                        <span class="hotspot-reveal">Et lille fund — slå JavaScript til for at se det.</span>
                     </span></h2>
                 <p class="spread-body">Den første idé opstod af en konkret oplevelse fra undervisningen: links fra undervisere er ofte fulgt af en cookie-/tracking-samtykke-popup om "samarbejdspartnere" — relevant i en privat sammenhæng, men malplaceret i en studiekontekst, hvor man ikke selv har valgt de virksomheder. Idéen blev undersøgt grundigt i sparring med ChatGPT: et forgrenet scenarie om at modtage et undervisningslink, blive mødt af en tracking-popup og vælge, hvordan man håndterer den — med tre skitserede slutninger (fra ukritisk accept til en bevidst, privat tilgang).</p>
 
@@ -132,29 +132,29 @@
                     <p class="stat-desc">forskellige udfald i alt — nogle belønner et kritisk, tilbageholdende valg, andre viser tydeligt, hvad der kan gå galt, når man deler for meget eller stoler blindt. Hvert udfald giver brugeren konkret feedback og et konkret sikkerhedsråd, farvekodet efter hvor sikkert eller risikabelt valget var.</p>
                 </div>
 
-                <div class="img-sequence">
+                <div class="img-sequence is-portrait">
                     <div class="img-sequence-item">
-                        <img class="img-photo" src="intro-chat.png" alt="Chatbotten åbner: 'Hej! Hjælpen er nær. Jeg kan hjælpe dig med din opgave — hvad arbejder du på?'" style="aspect-ratio: 419/545;" loading="lazy">
+                        <img class="img-photo" src="intro-chat.png" alt="Chatbotten åbner: 'Hej! Hjælpen er nær. Jeg kan hjælpe dig med din opgave — hvad arbejder du på?'" loading="lazy">
                         <p class="img-sequence-item-title">Trin 1</p>
                         <p class="img-sequence-item-note">Første kontakt</p>
                     </div>
                     <div class="img-sequence-item">
-                        <img class="img-photo" src="chat-share.png" alt="Chatbotten beder om at dele opgaven eller noterne for mere præcis hjælp" style="aspect-ratio: 424/550;" loading="lazy">
+                        <img class="img-photo" src="chat-share.png" alt="Chatbotten beder om at dele opgaven eller noterne for mere præcis hjælp" loading="lazy">
                         <p class="img-sequence-item-title">Trin 2</p>
                         <p class="img-sequence-item-note">Bedes dele mere</p>
                     </div>
                     <div class="img-sequence-item">
-                        <img class="img-photo" src="chat-pressure.png" alt="Chatbotten beder brugeren uploade filen via linket 'studie-hjælperen.dk'" style="aspect-ratio: 424/518;" loading="lazy">
+                        <img class="img-photo" src="chat-pressure.png" alt="Chatbotten beder brugeren uploade filen via linket 'studie-hjælperen.dk'" loading="lazy">
                         <p class="img-sequence-item-title">Trin 3</p>
                         <p class="img-sequence-item-note">Presset stiger</p>
                     </div>
                     <div class="img-sequence-item">
-                        <img class="img-photo" src="chat-consequens.png" alt="'Du bliver sendt til en side, der ligner en studieplatform... Kort efter modtager du en mail: Din konto er blevet kompromitteret'" style="aspect-ratio: 421/520;" loading="lazy">
+                        <img class="img-photo" src="chat-consequens.png" alt="'Du bliver sendt til en side, der ligner en studieplatform... Kort efter modtager du en mail: Din konto er blevet kompromitteret'" loading="lazy">
                         <p class="img-sequence-item-title">Trin 4</p>
                         <p class="img-sequence-item-note">Konsekvens</p>
                     </div>
                     <div class="img-sequence-item">
-                        <img class="img-photo" src="chat-danger.png" alt="Udfald: 'Du klikkede på et link fra en ukendt chatbot... blev brugt til at indsamle dine data' med tip om aldrig at klikke på links fra ukendte afsendere" style="aspect-ratio: 424/491;" loading="lazy">
+                        <img class="img-photo" src="chat-danger.png" alt="Udfald: 'Du klikkede på et link fra en ukendt chatbot... blev brugt til at indsamle dine data' med tip om aldrig at klikke på links fra ukendte afsendere" loading="lazy">
                         <p class="img-sequence-item-title">Trin 5</p>
                         <p class="img-sequence-item-note">Feedback</p>
                     </div>
@@ -185,7 +185,7 @@
                 <h2 class="spread-title">Data frem for hardcoding<span class="hotspot is-inline">
                         <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
                         <span class="hotspot-marker" aria-hidden="true"></span>
-                        <span class="hotspot-reveal">Fund #11 — placeholder.</span>
+                        <span class="hotspot-reveal">Et lille fund — slå JavaScript til for at se det.</span>
                     </span></h2>
                 <p class="spread-body">Chatbotten er bygget som en dynamisk popup i vanilla JavaScript, hvor selve indholdet — dialoger, forgreninger og feedback — er samlet i ét datadrevet array. Hvert scenarie har et unikt id og en type (dialog, information eller feedback-udfald), så navigationen styres af data frem for hardcodet logik i selve programmet. Det betyder, at nye scenarier kan tilføjes eller fjernes, uden at resten af systemet skal skrives om — en bevidst arkitektonisk beslutning, der rækker ud over opgavens minimumskrav.</p>
 
