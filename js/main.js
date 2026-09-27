@@ -22,7 +22,7 @@
 
      → Den første skat, en besøgende finder, er altid nr. 1.
      → Den sidste i listen er finalen. Listen bør derfor have lige så
-       mange skatte, som der er punkter på sitet (lige nu 8).
+       mange skatte, som der er punkter på sitet (lige nu 11).
      → Rækkefølgen ændres ved at flytte linjerne rundt. Intet andet.
 
      Hvert punkt husker sin skat (localStorage), så den samme besøgende
@@ -35,7 +35,19 @@
     ],
     [
       'Min designfilosofi i én sætning: <strong>Jeg bruger ikke tre knapper, hvis der kun er brug for to.</strong>',
-      'Men jeg undersøger lige, hvorfor den tredje var der, før jeg fjerner den.'
+      'Men jeg tjekker altid lige, hvorfor den tredje knap eksisterer, før jeg fjerner den.'
+    ],
+    [
+      'Jeg kan godt lide store idéer. Men på et tidspunkt spørger jeg næsten altid:',
+      '<strong>Okay. Hvad gør vi så helt konkret?</strong>.'
+    ],
+    [
+      'Jeg bruger gerne AI. Men jeg vil hellere forstå princippet end bare lære knappen.',
+      'Værktøjer skifter. Men menneskers behov for god kommunikation forbliver.'
+    ],
+    [
+      'Jeg tror ikke på, at man altid skal løse hele problemet på én gang.',
+      'Tag et lille skridt nu. Fokuser på det du kan gøre lige nu. Gentag.'
     ],
     [
       'Jeg har en svaghed for ildsjæle.',
@@ -54,7 +66,7 @@
       'Jeg vil hellere være god til at finde ud af, hvem der er god til hvad — og hvordan vi får det til at spille sammen.'
     ],
     [
-      'Jeg kan blive ret fandenivoldsk, når mennesker ikke får lige plads.',
+      'Jeg kan blive ret fandenivoldsk, når mennesker ikke får lige meget plads.',
       'Min foretrukne kampstrategi er dog stadig god kommunikation. Det virker bedre end at råbe.'
     ],
     [
@@ -104,6 +116,62 @@
     if (trigger) trigger.setAttribute('aria-label', label + ' — tryk for at vise igen');
   }
 
+  // Boksen åbner normalt OVER punktet. Er der ikke plads (fx øverst på
+  // siden), åbner den UNDER i stedet — og den skubbes ind fra siderne,
+  // så den aldrig går ud over skærmkanten.
+  var EDGE = 16;       // luft til skærmkanten
+  var TOP_SPACE = 80;  // plads til navigationen øverst
+
+  function place(spot) {
+    var reveal = spot.querySelector('.hotspot-reveal');
+    if (!reveal) return;
+    var rect = spot.getBoundingClientRect();
+    var w = reveal.offsetWidth;
+    var h = reveal.offsetHeight;
+
+    spot.classList.toggle('reveal-below', rect.top - h - 14 < TOP_SPACE);
+
+    var cx = rect.left + rect.width / 2;
+    var vw = document.documentElement.clientWidth;
+    var shift = 0;
+    if (cx - w / 2 < EDGE) shift = EDGE - (cx - w / 2);
+    else if (cx + w / 2 > vw - EDGE) shift = (vw - EDGE) - (cx + w / 2);
+    reveal.style.setProperty('--skat-shift', shift + 'px');
+  }
+
+  // Et fund skal ligge ØVERST, mens det er åbent. Ellers kan tekst længere
+  // nede på siden (fx en animeret overskrift) blive tegnet oven på boksen.
+  // Derfor løftes punktets forældre-elementer midlertidigt, og sættes
+  // tilbage igen, når fundet lukkes.
+  function raise(spot, on) {
+    var el = spot.parentElement;
+    while (el && el !== page && el !== document.body) {
+      if (on) {
+        if (getComputedStyle(el).position === 'static') {
+          el.style.position = 'relative';
+          el.setAttribute('data-skat-pos', '');
+        }
+        el.style.zIndex = '30';
+      } else {
+        el.style.zIndex = '';
+        if (el.hasAttribute('data-skat-pos')) {
+          el.style.position = '';
+          el.removeAttribute('data-skat-pos');
+        }
+      }
+      el = el.parentElement;
+    }
+  }
+
+  function setLit(spot, on) {
+    if (on && !spot.classList.contains('is-lit')) {
+      claim(spot);
+      place(spot);
+    }
+    spot.classList.toggle('is-lit', on);
+    raise(spot, on || spot.contains(document.activeElement));
+  }
+
   // Giver punktet den næste skat på listen — kun første gang, det findes.
   function claim(spot) {
     var id = spot.getAttribute('data-skat-id');
@@ -131,13 +199,15 @@
     if (state.spots.hasOwnProperty(id)) render(spot, state.spots[id]);
 
     // Tastatur: fundet afsløres via :focus-within i CSS — sørg for, at der er indhold.
-    spot.addEventListener('focusin', function () { claim(spot); });
+    spot.addEventListener('focusin', function () { claim(spot); place(spot); raise(spot, true); });
+    spot.addEventListener('focusout', function () {
+      if (!spot.classList.contains('is-lit')) raise(spot, false);
+    });
 
     // Touch/klik har ingen "hover", så her tændes/slukkes fundet eksplicit ved tryk.
     if (trigger) {
       trigger.addEventListener('click', function () {
-        claim(spot);
-        spot.classList.toggle('is-lit');
+        setLit(spot, !spot.classList.contains('is-lit'));
       });
     }
   });
@@ -151,8 +221,7 @@
       var cx = rect.left + rect.width / 2;
       var cy = rect.top + rect.height / 2;
       var lit = Math.hypot(x - cx, y - cy) < LIGHT_RADIUS;
-      if (lit) claim(spot);
-      spot.classList.toggle('is-lit', lit);
+      if (lit !== spot.classList.contains('is-lit')) setLit(spot, lit);
     });
   }
 

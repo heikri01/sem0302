@@ -497,15 +497,24 @@ a { color: inherit; }
   position: absolute;
   left: 50%;
   bottom: calc(100% + 14px);
-  transform: translateX(-50%) translateY(8px);
+  transform: translateX(calc(-50% + var(--skat-shift, 0px))) translateY(8px);
   width: max-content;
   max-width: 270px;
   padding: 12px 16px;
   border-radius: 12px;
   background: var(--bg);
   border: 1px solid var(--forme);
+  /* Nulstil alt, boksen ellers ville arve fra teksten, punktet sidder i
+     (fx VERSALER og mono i "byder velkommen", kursiv serif i overskrifter) */
+  font-family: 'Karla', system-ui, sans-serif;
   font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
   line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  white-space: normal;
   color: var(--ink);
   opacity: 0;
   pointer-events: none;
@@ -516,8 +525,28 @@ a { color: inherit; }
 .hotspot.is-lit .hotspot-reveal,
 .hotspot:focus-within .hotspot-reveal {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(calc(-50% + var(--skat-shift, 0px))) translateY(0);
   pointer-events: auto;
+}
+
+/* Ikke plads over punktet (øverst på siden) → boksen åbner nedad */
+.hotspot.reveal-below .hotspot-reveal {
+  bottom: auto;
+  top: calc(100% + 14px);
+  transform: translateX(calc(-50% + var(--skat-shift, 0px))) translateY(-8px);
+}
+
+.hotspot.reveal-below.is-lit .hotspot-reveal,
+.hotspot.reveal-below:focus-within .hotspot-reveal {
+  transform: translateX(calc(-50% + var(--skat-shift, 0px))) translateY(0);
+}
+
+/* Punkt der sidder inde i en tekstlinje (fx for enden af en overskrift) */
+.hotspot.is-inline {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: .45em;
 }
 
 .hotspot-reveal a {
