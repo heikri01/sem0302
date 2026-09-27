@@ -8,7 +8,6 @@
   var filters = Array.prototype.slice.call(document.querySelectorAll('.ai-log-filter'));
   var currentFilter = 'all';
 
-  var TOOL_LABEL = { claude: 'Claude', chatgpt: 'ChatGPT' };
 
   function el(tag, className, text) {
     var e = document.createElement(tag);
@@ -76,14 +75,14 @@
   }
 
   function updateCounts() {
-    var counts = { all: data.length, claude: 0, chatgpt: 0 };
+    var counts = { all: data.length };
     data.forEach(function (entry) {
-      if (counts[entry.tool] !== undefined) counts[entry.tool]++;
+      counts[entry.tool] = (counts[entry.tool] || 0) + 1;
     });
     filters.forEach(function (btn) {
       var span = btn.querySelector('.ai-log-count');
-      var n = counts[btn.dataset.filter];
-      if (span && n !== undefined) span.textContent = '(' + n + ')';
+      var n = counts[btn.dataset.filter] || 0;
+      if (span) span.textContent = '(' + n + ')';
     });
   }
 
