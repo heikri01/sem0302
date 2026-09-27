@@ -1200,7 +1200,9 @@ a { color: inherit; }
 
 .stat-highlight {
   display: flex;
-  align-items: baseline;
+  /* center i stedet for baseline: ved flere linjer satte baseline kun første linje
+     på tallets bundlinje, så teksten hang for langt nede */
+  align-items: center;
   flex-wrap: wrap;
   gap: 8px clamp(24px, 4vw, 40px);
   margin-top: clamp(24px, 4vw, 32px);
@@ -1445,6 +1447,67 @@ a { color: inherit; }
   }
 }
 
+/* Prompt bridge (to billeder side om side, prompten lagt ind over begge) */
+
+.prompt-bridge {
+  position: relative;
+  margin: clamp(24px, 4vw, 32px) 0 0;
+  max-width: 640px;
+}
+
+.prompt-bridge-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.prompt-bridge-images .img-photo {
+  aspect-ratio: 2 / 3;
+}
+
+.prompt-bridge-bubble {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -50%);
+  width: min(78%, 440px);
+  margin: 0;
+  padding: 14px 18px 16px;
+  background: var(--bg);
+  border: 1px solid var(--chip-border);
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+}
+
+.prompt-bridge-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--forbind);
+}
+
+.prompt-bridge-bubble p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* På smalle skærme dækker boblen for meget: den glider ned under billederne og overlapper kun lidt */
+@media (max-width: 560px) {
+  .prompt-bridge-bubble {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    margin: -48px 12px 0;
+  }
+}
+
 /* Image placeholder + sequence */
 
 .img-placeholder {
@@ -1509,6 +1572,14 @@ a { color: inherit; }
   flex: 1 1 280px;
 }
 
+/* Billeder i en blok skal have deres egen højde. Med .img-photo's height: 100%
+   fyldte billedet hele blokken, og billedteksten løb ud under blokken
+   og ind i afstanden til næste billede */
+.img-block > .img-photo,
+.img-block > .img-video {
+  height: auto;
+}
+
 .img-sequence {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1522,6 +1593,16 @@ a { color: inherit; }
 
 .img-sequence.is-three {
   grid-template-columns: repeat(3, 1fr);
+}
+
+/* Billeder i rækken får samme format, så titler og noter står på linje.
+   height: auto er nødvendig — ellers arver billedet .img-photo's height: 100%
+   og teksten under løber ud over rækken */
+.img-sequence-item .img-photo {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .img-sequence-item .step-num {
@@ -1601,4 +1682,44 @@ a { color: inherit; }
 
 .pending-note strong {
   color: var(--ink);
+}
+
+/* ------------------------------------------------------------
+   Mobil: mere luft mellem billeder
+   Når billederne stables, skal hver billedtekst tydeligt høre til
+   billedet over sig og ikke til det næste billede.
+   ------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .img-row,
+  .img-sequence,
+  .img-sequence.is-four,
+  .img-sequence.is-three {
+    row-gap: 44px;
+  }
+
+  .img-block {
+    margin-top: 40px;
+  }
+
+  .img-row .img-block {
+    margin-top: 0;
+  }
+
+  .img-caption {
+    margin-top: 12px;
+  }
+
+  /* titlen under mobilskærmene i spread 9 sad næsten oven i billedet */
+  .img-sequence-item .img-photo + .img-sequence-item-title {
+    margin-top: 12px;
+  }
+
+  .visual-transition {
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .prompt-bridge {
+    margin-top: 48px;
+  }
 }
