@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersikker — Case study</title>
+    <meta name="description" content="Case study: en datadrevet chatbot-simulation om digital sikkerhedsadfærd, fra en droppet idé til et kodet, tilgængeligt system.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="page dark" id="page">
+        <div class="grid-overlay"></div>
+        <div class="glow" id="glow"></div>
+
+        <header class="header">
+            <div class="brand">
+                <span class="status-dot"></span>
+                <span>HDK — Multimediedesigner</span>
+            </div>
+            <nav class="site-nav" aria-label="Hovednavigation">
+                <a href="../index.html">Forside</a>
+                <a href="../rejsen.html">Rejsen</a>
+                <a href="index.html" class="active">Case studies</a>
+                <a href="../projekter.html">Projekter</a>
+                <a href="../ai-log.html">AI log</a>
+                <a href="../om-mig.html">Om mig</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
+                <span id="themeLabel">Lys</span>
+            </button>
+        </header>
+
+        <main class="main main-wide">
+
+            <!-- Spread 1 — Forside -->
+            <p class="eyebrow">Semesterprojekt · Individuelt · Vanilla JS/SCSS · Ingen frameworks</p>
+            <h1 class="title">Cybersikker</h1>
+            <p class="case-sub">En interaktiv chatbot-simulation, der lærer studerende at genkende manipulation — bygget som et datadrevet system fra bunden</p>
+            <p class="case-intro">Projektet er en individuel opgave fra 2. semester: udvikl en interaktiv brugergrænseflade i HTML, SCSS og vanilla JavaScript, der formidler et selvvalgt emne inden for datasikkerhed til studerende. Løsningen blev en chatbot-simulation, hvor brugeren gradvist mødes med tillid, pres og til sidst et valg — og selv oplever konsekvensen af sin egen adfærd.</p>
+
+            <div class="img-row">
+                <div class="img-block" style="flex-grow: 2;">
+                    <img class="img-photo" src="forside-desktop.png" alt="Forsiden af Cybersikker på desktop: 'Velkommen til dit nye studie — start sikkert online', med info-kort om passwords og cookies" style="aspect-ratio: 1024/795;" loading="lazy">
+                    <span class="img-caption">Desktop</span>
+                </div>
+                <div class="img-block" style="flex-grow: 1; max-width: 260px;">
+                    <img class="img-photo" src="forside-mobil.png" alt="Forsiden af Cybersikker på mobil" style="aspect-ratio: 425/799;" loading="lazy">
+                    <span class="img-caption">Mobil</span>
+                </div>
+            </div>
+
+            <div class="case-links">
+                <a class="case-link" href="https://heididesire.dk/cybersikker" target="_blank" rel="noopener">→ Se det oprindelige projekt ↗</a>
+            </div>
+
+            <nav class="spread-nav" aria-label="Spring til afsnit">
+                <a class="spread-nav-item" href="#spread-2">02</a>
+                <a class="spread-nav-item" href="#spread-3">03</a>
+                <a class="spread-nav-item" href="#spread-4">04</a>
+                <a class="spread-nav-item" href="#spread-5">05</a>
+                <a class="spread-nav-item" href="#spread-6">06</a>
+                <a class="spread-nav-item" href="#spread-7">07</a>
+                <a class="spread-nav-item" href="#spread-8">08</a>
+                <a class="spread-nav-item" href="#spread-9">09</a>
+                <a class="spread-nav-item" href="#spread-10">10</a>
+            </nav>
+
+            <!-- Spread 2 — Opgaven -->
+            <section class="spread" id="spread-2">
+                <p class="spread-eyebrow">Spread 02 · Opgaven</p>
+                <h2 class="spread-title">Opgaven</h2>
+                <p class="spread-body">Kravet var klart afgrænset: en responsiv, interaktiv brugergrænseflade i ren HTML/SCSS/JavaScript — ingen frameworks — med et forgrenet scenarie, der formidler et selvvalgt datasikkerhedsemne til studerende på erhvervsakademier. Scenariet skulle som minimum have flere trin, mindst ét valg med konsekvenser og mindst to mulige slutninger.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Fag</span>
+                        <p class="fact-value">Multimedieproduktion 2, "Interaktive Brugeroplevelser" — 2. semester</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Form</span>
+                        <p class="fact-value">Individuelt projekt, 30% af semesterporteføljen, bedømt efter 7-trinsskalaen</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Periode</span>
+                        <p class="fact-value">7. april – 8. maj 2026</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Forskningsspørgsmål</span>
+                        <p class="fact-value is-quote">"Hvordan kan en interaktiv brugergrænseflade med et forgrenet scenarie udviklet i HTML, SCSS og Vanilla JavaScript guide studerende på erhvervsakademier til at træffe mere sikre valg i digitale situationer?"</p>
+                    </div>
+                </div>
+
+                <p class="img-caption" style="margin-top: 24px;">MMDsEDK25B · Multimediedesign, IBA Erhvervsakademi Kolding</p>
+            </section>
+
+            <!-- Spread 3 — Idéen, der ikke blev til noget -->
+            <section class="spread" id="spread-3">
+                <p class="spread-eyebrow">Spread 03 · Idéen, der ikke blev til noget</p>
+                <h2 class="spread-title">Idéen, der ikke blev til noget</h2>
+                <p class="spread-body">Den første idé opstod af en konkret oplevelse fra undervisningen: links fra undervisere er ofte fulgt af en cookie-/tracking-samtykke-popup om "samarbejdspartnere" — relevant i en privat sammenhæng, men malplaceret i en studiekontekst, hvor man ikke selv har valgt de virksomheder. Idéen blev undersøgt grundigt i sparring med ChatGPT: et forgrenet scenarie om at modtage et undervisningslink, blive mødt af en tracking-popup og vælge, hvordan man håndterer den — med tre skitserede slutninger (fra ukritisk accept til en bevidst, privat tilgang).</p>
+
+                <blockquote class="pull-quote">
+                    <p>"Det er faktisk en rigtig stærk og meget realistisk idé, og den passer ekstremt godt til projektkravene."</p>
+                </blockquote>
+
+                <p class="spread-body">Ved forsøget på at omsætte idéen til et fungerende flowchart gik processen i stå — konceptet viste sig svært at oversætte til en fungerende UX/UI-struktur i praksis. Fremfor at presse en idé, der ikke ville lykkes, blev den bevidst forkastet.</p>
+
+                <div class="img-block">
+                    <img class="img-photo" src="original-flowchart.svg" alt="Flowchart over den oprindelige, forkastede idé: et link fra underviser fører til en cookie pop up, hvor accept af cookies fører til dårlige udfald som 'du delte dine data med 137 partnere', mens afvisning eller tilpasning fører til bedre udfald" style="aspect-ratio: 1311/696;" loading="lazy">
+                    <span class="img-caption">Flowchart v1 · den forkastede idé</span>
+                </div>
+
+                <p class="img-caption" style="margin-top: 24px;">Idéen findes dokumenteret i en gemt ChatGPT-samtale, som en del af AI-loggen (se spread 9).</p>
+            </section>
+
+            <!-- Spread 4 — Pivoten -->
+            <section class="spread" id="spread-4">
+                <p class="spread-eyebrow">Spread 04 · Samme kerne, ny form</p>
+                <h2 class="spread-title">Samme kerne, ny form</h2>
+                <p class="spread-body">Samme dag konceptet gik i stå, blev en ny idé vurderet: at bruge en chatbot som omdrejningspunkt i stedet. Den nye idé bevarede kernen fra den oprindelige — tillid til en tilsyneladende legitim digital tjeneste, gradvis datadeling, konsekvenser af valget — men i en form, der var langt lettere at udvikle og teste i praksis. Et nyt flowchart blev udarbejdet samme dag, og det blev den endelige retning.</p>
+                <p class="spread-body">En chatbot-popup møder brugeren med hjælpsomhed, og forsøger gradvist — gennem en række spørgsmål og opfordringer — at få brugeren til at dele mere, end der er grund til. Formålet er ikke at skræmme, men at gøre brugeren opmærksom på, hvor let tillid kan misbruges, og hvordan man genkender det undervejs.</p>
+
+                <div class="stat-highlight">
+                    <span class="stat-number">6</span>
+                    <p class="stat-desc">forskellige udfald i alt — nogle belønner et kritisk, tilbageholdende valg, andre viser tydeligt, hvad der kan gå galt, når man deler for meget eller stoler blindt. Hvert udfald giver brugeren konkret feedback og et konkret sikkerhedsråd, farvekodet efter hvor sikkert eller risikabelt valget var.</p>
+                </div>
+
+                <div class="img-sequence">
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="intro-chat.png" alt="Chatbotten åbner: 'Hej! Hjælpen er nær. Jeg kan hjælpe dig med din opgave — hvad arbejder du på?'" style="aspect-ratio: 419/545;" loading="lazy">
+                        <p class="img-sequence-item-title">Trin 1</p>
+                        <p class="img-sequence-item-note">Første kontakt</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="chat-share.png" alt="Chatbotten beder om at dele opgaven eller noterne for mere præcis hjælp" style="aspect-ratio: 424/550;" loading="lazy">
+                        <p class="img-sequence-item-title">Trin 2</p>
+                        <p class="img-sequence-item-note">Bedes dele mere</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="chat-pressure.png" alt="Chatbotten beder brugeren uploade filen via linket 'studie-hjælperen.dk'" style="aspect-ratio: 424/518;" loading="lazy">
+                        <p class="img-sequence-item-title">Trin 3</p>
+                        <p class="img-sequence-item-note">Presset stiger</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="chat-consequens.png" alt="'Du bliver sendt til en side, der ligner en studieplatform... Kort efter modtager du en mail: Din konto er blevet kompromitteret'" style="aspect-ratio: 421/520;" loading="lazy">
+                        <p class="img-sequence-item-title">Trin 4</p>
+                        <p class="img-sequence-item-note">Konsekvens</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="chat-danger.png" alt="Udfald: 'Du klikkede på et link fra en ukendt chatbot... blev brugt til at indsamle dine data' med tip om aldrig at klikke på links fra ukendte afsendere" style="aspect-ratio: 424/491;" loading="lazy">
+                        <p class="img-sequence-item-title">Trin 5</p>
+                        <p class="img-sequence-item-note">Feedback</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread 5 — Flowchartets to versioner -->
+            <section class="spread" id="spread-5">
+                <p class="spread-eyebrow">Spread 05 · Flowchartets to versioner</p>
+                <h2 class="spread-title">At tegne en beslutning, før man koder den</h2>
+                <p class="spread-body">Version 1 af flowchartet var en simpel, forgrenet skitse uden klare kategorier — nok til at få idéen ned, men svær at kvalitetssikre og bruge som grundlag for kode. Version 2 blev bygget om med tydelige swimlanes (introduktion → opbygning af tillid → risikovalg → udfald) og en eksplicit legend, der skelner mellem brugerhandlinger, systemhandlinger, beslutninger og feedback. Det gjorde strukturen langt lettere at omsætte direkte til det datadrevne scenariesystem i kode (se spread 6).</p>
+
+                <div class="img-row">
+                    <div class="img-block">
+                        <img class="img-photo" src="Flowchart%20version%201.png" alt="Flowchart v1: simpel, forgrenet skitse af chatbot-scenariet uden swimlanes eller legend" style="aspect-ratio: 6048/5367;" loading="lazy">
+                        <span class="img-caption">Flowchart v1</span>
+                    </div>
+                    <div class="img-block">
+                        <img class="img-photo" src="Flowchart%20version%202.png" alt="Flowchart v2: samme scenarie omstruktureret med swimlanes (introduktion, opbygning af tillid, risiko, outcomes) og en eksplicit legend" style="aspect-ratio: 6984/8288;" loading="lazy">
+                        <span class="img-caption">Flowchart v2</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread 6 — Teknisk arkitektur -->
+            <section class="spread" id="spread-6">
+                <p class="spread-eyebrow">Spread 06 · Teknisk arkitektur</p>
+                <h2 class="spread-title">Data frem for hardcoding</h2>
+                <p class="spread-body">Chatbotten er bygget som en dynamisk popup i vanilla JavaScript, hvor selve indholdet — dialoger, forgreninger og feedback — er samlet i ét datadrevet array. Hvert scenarie har et unikt id og en type (dialog, information eller feedback-udfald), så navigationen styres af data frem for hardcodet logik i selve programmet. Det betyder, at nye scenarier kan tilføjes eller fjernes, uden at resten af systemet skal skrives om — en bevidst arkitektonisk beslutning, der rækker ud over opgavens minimumskrav.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <p class="fact-value">JavaScript: variabler, betingede udsagn, funktioner, event listeners, DOM-manipulation, datadrevne objekter — alt i vanilla JS, ingen frameworks</p>
+                    </div>
+                    <div class="fact-row">
+                        <p class="fact-value">SCSS struktureret i partials (knapper, kort, chatbot, variabler) med variabler, nesting og mixins for en vedligeholdelsesvenlig kodebase</p>
+                    </div>
+                    <div class="fact-row">
+                        <p class="fact-value">Tilgængelighedskrav indbygget i selve interaktionslaget, ikke lagt på bagefter (se spread 7)</p>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <span class="code-block-label">Kodeudsnit — scenarier.js (uddrag)</span>
+                    <pre>export const scenarier = [
+  {
+    id: "intro",
+    type: "question",
+    tekst: `Hej! Jeg kan hjælpe dig...`,
+    svar: [
+      { tekst: "Jeg skriver en opgave om websikkerhed", næste: "share" },
+      { tekst: "Hvem er du?", næste: "present-ai" }
+    ]
+  },
+  {
+    id: "phish",
+    type: "info",
+    tekst: `Du bliver sendt til en side, der ligner en studieplatform...`,
+    konsekvens: `Kort efter modtager du en mail: "Din konto er kompromitteret."`,
+    cta: `clicked`
+  }
+];</pre>
+                </div>
+            </section>
+
+            <!-- Spread 7 — Tilgængelighed -->
+            <section class="spread" id="spread-7">
+                <p class="spread-eyebrow">Spread 07 · Tilgængelighed</p>
+                <h2 class="spread-title" style="max-width: 24ch;">Også en chatbot skal kunne betjenes uden mus</h2>
+                <p class="spread-body">En interaktiv chatbot-modal er let at bygge, så den kun virker med mus og øjne. Her var fokus på tastaturnavigation, en fokusfælde der holder brugeren inde i dialogen mens den er åben, og fuld understøttelse af tab- og escape-tasterne — både i chatbotten og i sitets hamburgermenu.</p>
+
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="step-num">01</span>
+                        <p>Tastaturnavigation gennem hele scenariet</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">02</span>
+                        <p>Fokusfælde i chatbot-modalen (fokus forlader ikke dialogen, mens den er åben)</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">03</span>
+                        <p>Escape lukker dialogen; tab bevæger sig kun inden for den</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">04</span>
+                        <p>Skærmlæservenlig, tilgængelig mobilmenu</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread 8 — Det færdige resultat -->
+            <section class="spread" id="spread-8">
+                <p class="spread-eyebrow">Spread 08 · Det færdige resultat</p>
+                <h2 class="spread-title">Cybersikker — live</h2>
+                <p class="spread-body">Det færdige site samler chatbot-simulationen, designsystemet og tilgængelighedsarbejdet i én sammenhængende oplevelse.</p>
+
+                <div class="img-row">
+                    <div class="img-block" style="flex: 0 1 260px;">
+                        <img class="img-photo" src="cybersikker-mobil-forside-lang.png" alt="Fuld mobilvisning af Cybersikker-forsiden: hero, intro med CTA, og de fire info-kort (passwords, cookies, eksterne links, chatbot)" style="aspect-ratio: 422/1955;" loading="lazy">
+                        <span class="img-caption">Forside — fuld mobilvisning</span>
+                    </div>
+                    <div class="img-block" style="flex: 2 1 480px; display: flex; flex-direction: column; gap: clamp(20px, 3vw, 28px);">
+                        <div>
+                            <div class="img-row" style="margin-top: 0;">
+                                <div class="img-block" style="margin-top: 0; flex: 1 1 200px;">
+                                    <img class="img-photo" src="question-1.png" alt="Chatbotten åben på det live site, med intro-beskeden og svarmulighederne synlige" style="aspect-ratio: 3/5; object-position: top;" loading="lazy">
+                                </div>
+                                <div class="img-block" style="margin-top: 0; flex: 1 1 200px;">
+                                    <img class="img-photo" src="Sk%C3%A6rmbillede%202026-09-27%20181930.png" alt="Chatbotten svarer 'Hvem er du?': 'Jeg er en AI-assistent udviklet til at hjælpe studerende med deres opgaver...'" style="aspect-ratio: 3/5; object-position: top;" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="img-caption">Chatbot åben — samtale i gang</span>
+                        </div>
+                        <div>
+                            <div class="img-row" style="margin-top: 0;">
+                                <div class="img-block" style="margin-top: 0; flex: 1 1 200px;">
+                                    <img class="img-photo" src="konsekvens.png" alt="Chatbotten presser videre: 'Jeg er en uafhængig service og ikke tilknyttet dit studie. Men jeg kan stadig hjælpe dig hurtigt'" style="aspect-ratio: 3/5; object-position: top;" loading="lazy">
+                                </div>
+                                <div class="img-block" style="margin-top: 0; flex: 1 1 200px;">
+                                    <img class="img-photo" src="Sk%C3%A6rmbillede%202026-09-27%20182022.png" alt="Positivt udfald: 'Du var kritisk og spurgte ind til, hvem chatbotten var...' med tip om altid at tjekke afsender og platform" style="aspect-ratio: 3/5; object-position: top;" loading="lazy">
+                                </div>
+                            </div>
+                            <span class="img-caption">Et af de seks udfald</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Produktets egne farver (historisk artefakt — ikke porteføljens designsprog)</span>
+                        <div class="swatch-row">
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #090142;"></span>
+                                <span>#090142 · navy baggrund</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #F15A24;"></span>
+                                <span>#F15A24 · orange accent</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #00DF00;"></span>
+                                <span>#00DF00 · grøn (godt udfald)</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #E6C500;"></span>
+                                <span>#E6C500 · gul (neutralt udfald)</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #F00000;"></span>
+                                <span>#F00000 · rød (dårligt udfald)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Typografi</span>
+                        <p class="fact-value">Amaranth (overskrifter) · Inter (brødtekst)</p>
+                    </div>
+                </div>
+
+                <p class="img-caption" style="margin-top: 24px;">heididesire.dk/cybersikker · GitHub: github.com/heikri01/sem0202</p>
+            </section>
+
+            <!-- Spread 9 — AI som samarbejdspartner -->
+            <section class="spread" id="spread-9">
+                <p class="spread-eyebrow">Spread 09 · AI som samarbejdspartner</p>
+                <h2 class="spread-title">En måned med ChatGPT som sparringspartner</h2>
+                <p class="spread-body">AI-brugen i dette projekt er ikke et enkelt værktøjsopslag, men en løbende dialog gennem hele forløbet — fra at vurdere den første, forkastede idé, til at få hjælp til konkrete tekniske forhindringer undervejs (en hamburgermenu, der ikke ville virke; en oprydning af kodefilerne mod slutningen).</p>
+
+                <div class="step-list is-dates">
+                    <div class="step-item">
+                        <span class="step-num">13/4</span>
+                        <p>Vurdering af den oprindelige idé, og de første huller i den</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">17/4</span>
+                        <p>Forsøget på at kvalitetssikre det første flowchart, der gik i stå</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">21/4</span>
+                        <p>Pivoten: ny idé vurderet og valgt samme dag</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">22+30/4</span>
+                        <p>Opsætning af designsystem og komponenter i Figma</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">5-6/5</span>
+                        <p>Teknisk hjælp til hamburgermenu og det datadrevne scenariesystem</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">7-8/5</span>
+                        <p>Oprydning af koden og finpudsning af det afsluttende paper</p>
+                    </div>
+                </div>
+
+                <p class="spread-body" style="margin-top: clamp(24px, 4vw, 32px);">Pointen: AI blev brugt til sparring og tekniske forhindringer undervejs — men både beslutningen om at forkaste den første idé, den endelige systemarkitektur og alt indhold i chatbot-scenariet er egne, bearbejdede valg.</p>
+
+                <div class="img-block">
+                    <img class="img-photo" src="ai-log.png" alt="Udsnit af AI-loggen: dato, formål, prompt, genereret output og bearbejdning for hver AI-brug i Cybersikker-projektet" style="aspect-ratio: 837/688;" loading="lazy">
+                    <span class="img-caption">Udsnit af AI-loggen</span>
+                </div>
+
+                <div class="aside-box">
+                    <span class="aside-label">Bemærk</span>
+                    <p>Dette er en anden liste end porteføljens fælles AI-log — ChatGPT-forløbet i Cybersikker-projektet hører hjemme her, i selve case studien.</p>
+                </div>
+            </section>
+
+            <!-- Spread 10 — Refleksion & læring -->
+            <section class="spread" id="spread-10">
+                <p class="spread-eyebrow">Spread 10 · Refleksion &amp; læring</p>
+                <h2 class="spread-title">Formidlingen er mit stærkeste kort</h2>
+
+                <p class="spread-body">Cybersikker blev det projekt, hvor det for alvor stod klart for mig, hvor min styrke og interesse ligger: i brugeroplevelsen omkring indholdet, historien og hvordan budskabet formidles til brugeren — mere end i, hvordan koden er bygget op bag kulisserne. AI-assistancen gjorde det muligt at komme hele vejen i mål teknisk, men det var arbejdet med selve scenariet, tonen i chatbottens replikker og at gøre en tør sikkerhedspointe til noget, brugeren selv oplever konsekvensen af, jeg selv brændte for og arbejdede bedst med.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Hvad jeg tager med mig</span>
+                    </div>
+                    <div class="step-list" style="margin-top: 0;">
+                        <div class="step-item">
+                            <span class="step-num">01</span>
+                            <p>At en idé kan være konceptuelt stærk og stadig være den forkerte at bygge videre på — og at det er en gyldig, professionel beslutning at forkaste den, når den ikke fungerer i praksis.</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">02</span>
+                            <p>At jeg både interesserer mig mere for og arbejder langt bedre med fokus på indhold og kommunikation udadtil end med den bagvedliggende kodeopbygning — en erkendelse, dette projekt gjorde tydelig.</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">03</span>
+                            <p>At AI er stærkest som sparringspartner og teknisk hjælp undervejs, ikke som erstatning for egne indholdsmæssige valg.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <a class="back-link" href="index.html">← Tilbage til case studies</a>
+        </main>
+
+        <footer class="footer">
+            <span>VIBY SJÆLLAND, DANMARK</span>
+            <span>Fuld portfolio på vej</span>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

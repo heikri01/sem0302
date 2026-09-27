@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webtilgængelighed — Case study</title>
+    <meta name="description" content="Case study: Brugdineord.dk — nudging, WCAG-tilgængelighed og persona-arbejdet med Anton.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="page dark" id="page">
+        <div class="grid-overlay"></div>
+        <div class="glow" id="glow"></div>
+
+        <header class="header">
+            <div class="brand">
+                <span class="status-dot"></span>
+                <span>HDK — Multimediedesigner</span>
+            </div>
+            <nav class="site-nav" aria-label="Hovednavigation">
+                <a href="../index.html">Forside</a>
+                <a href="../rejsen.html">Rejsen</a>
+                <a href="index.html" class="active">Case studies</a>
+                <a href="../projekter.html">Projekter</a>
+                <a href="../ai-log.html">AI log</a>
+                <a href="../om-mig.html">Om mig</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
+                <span id="themeLabel">Lys</span>
+            </button>
+        </header>
+
+        <main class="main main-wide">
+
+            <!-- Spread 1 — Forside -->
+            <div class="case-top-row">
+                <p class="eyebrow" style="margin: 0;">Semesterprojekt · WCAG 2.2 · UX/tilgængelighedsdesign</p>
+                <span class="karakter-badge" style="position: relative;">
+                    Karakter: 7
+                    <span class="hotspot" style="left: 100%; top: 50%; margin-left: 14px; transform: translateY(-50%);">
+                        <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
+                        <span class="hotspot-marker" aria-hidden="true"></span>
+                        <span class="hotspot-reveal">Fund #5 — placeholder.</span>
+                    </span>
+                </span>
+            </div>
+            <h1 class="title">Brug Dine Ord</h1>
+            <p class="case-sub">En tilgængelig hjemmeside om unges afmagt — bygget omkring én stemme, der tør gå forrest</p>
+            <p class="case-intro">Projektet tager udgangspunkt i webtilgængelighed på en hjemmeside for unge mellem 15-18 år om mental sundhed og trivsel. For at inkludere flest mulige brugere fokuserede researchen på unge med udadreagerende adfærd — dem, der sjældnere bliver mødt med forståelse. Løsningen blev en fiktiv, men research-funderet karakter: Anton.</p>
+
+            <div class="img-row">
+                <div class="img-block" style="flex-grow: 3;">
+                    <img class="img-photo" src="desktop-forside.png" alt="Forsiden af brugdineord.dk på desktop, med en illustreret gruppe unge der vinker" style="aspect-ratio: 1291/841;" loading="lazy">
+                    <span class="img-caption">Desktop</span>
+                </div>
+                <div class="img-block" style="flex-grow: 1; max-width: 260px;">
+                    <img class="img-photo" src="moibl-forside.png" alt="Forsiden af brugdineord.dk på mobil" style="aspect-ratio: 416/854;" loading="lazy">
+                    <span class="img-caption">Mobil</span>
+                </div>
+            </div>
+
+            <div class="case-links">
+                <a class="case-link" href="https://heididesire.dk/brugdineord" target="_blank" rel="noopener">→ Se det oprindelige projekt ↗</a>
+            </div>
+
+            <nav class="spread-nav" aria-label="Spring til afsnit">
+                <a class="spread-nav-item" href="#spread-2">02</a>
+                <a class="spread-nav-item" href="#spread-3">03</a>
+                <a class="spread-nav-item" href="#spread-4">04</a>
+                <a class="spread-nav-item" href="#spread-5">05</a>
+                <a class="spread-nav-item" href="#spread-6">06</a>
+                <a class="spread-nav-item" href="#spread-7">07</a>
+                <a class="spread-nav-item" href="#spread-8">08</a>
+                <a class="spread-nav-item" href="#spread-9">09</a>
+                <a class="spread-nav-item" href="#spread-10">10</a>
+            </nav>
+
+            <!-- Spread 2 — Brief & udfordring -->
+            <section class="spread" id="spread-2">
+                <p class="spread-eyebrow">Spread 02 · Brief &amp; udfordring</p>
+                <h2 class="spread-title">Udfordringen</h2>
+                <p class="spread-body">Opgaven var at designe og udvikle en responsiv, tilgængelig hjemmeside efter WCAG 2.2 — testet af rigtige brugere. Jeg valgte at gå efter et emne, hvor tilgængelighed ikke bare handler om compliance, men om at nå en målgruppe, der har det svært, og som normalt ikke bliver hørt.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Projektmål</span>
+                        <p class="fact-value">En tryg, ikke-dømmende og handleorienteret platform med konkrete værktøjer til at udtrykke følelser med ord frem for handlinger.</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Målgruppe</span>
+                        <p class="fact-value">Unge i udskolingen, der kæmper med udadreagerende adfærd.</p>
+                    </div>
+                    <div class="fact-row">
+                        <p class="fact-value is-quote">"Her får du værktøjer til at sige, hvad du føler — uden at råbe, smadre eller gå i baglås."</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Samarbejdspartner</span>
+                        <p class="fact-value">Psykoterapeut Lykke Rosenkrantz (indhold/faglighed) — jeg stod for koncept, UX og teknisk udvikling.</p>
+                    </div>
+                </div>
+
+                <p class="img-caption" style="margin-top: 24px;">21.11.2025 · Individuel opgave</p>
+            </section>
+
+            <!-- Spread 3 — Research -->
+            <section class="spread" id="spread-3">
+                <p class="spread-eyebrow">Spread 03 · Research</p>
+                <h2 class="spread-title">At forstå den, ingen lytter til</h2>
+                <p class="spread-body">For at ramme målgruppen ærligt tog researchen udgangspunkt i et virkeligt læserbrev fra en 19-årig mand om ukontrolleret vrede — ikke en opdigtet problemstilling. Det blev fundamentet for et empathy map og en konkret målgruppeprofil.</p>
+
+                <div class="stat-highlight">
+                    <span class="stat-number">21.118</span>
+                    <p class="stat-desc">unge underretninger i 2024 skyldes "anden bekymrende adfærd hos barnet eller den unge, fx udadreagerende adfærd" (Danmarks Statistik)</p>
+                </div>
+
+                <blockquote class="pull-quote">
+                    <p>"Jeg føler lidt, at hun glemte lidt, at det faktisk var et barn, hun havde med at gøre."</p>
+                </blockquote>
+
+                <div class="grid-2x2">
+                    <div class="grid-cell">
+                        <span class="grid-cell-label">Siger</span>
+                        <p>Føler sig overhørt — oplevede at voksnes "faglige vurdering" vejede tungere end eget behov.</p>
+                    </div>
+                    <div class="grid-cell">
+                        <span class="grid-cell-label">Tænker</span>
+                        <p>"Det er nok mig, der er problemet." "Jeg skal passe på hvad jeg siger."</p>
+                    </div>
+                    <div class="grid-cell">
+                        <span class="grid-cell-label">Føler</span>
+                        <p>Frustreret, overset, ude af kontrol.</p>
+                    </div>
+                    <div class="grid-cell">
+                        <span class="grid-cell-label">Gør</span>
+                        <p>Kaster med ting, smækker med døre, isolerer sig.</p>
+                    </div>
+                </div>
+
+                <div class="img-row">
+                    <div class="img-block">
+                        <img class="img-photo" src="Skærmbillede 2026-09-15 191100.png" alt="Empathy map for Anton: siger, tænker, føler, gør — samt et eksempel på et virkeligt brevkasseopslag, der inspirerede researchen" style="aspect-ratio: 1330/726;" loading="lazy">
+                        <span class="img-caption">Empathy map</span>
+                    </div>
+                    <div class="img-block">
+                        <img class="img-photo" src="statistik.png" alt="Danmarks Statistik-tabel over årsager til underretninger for unge 15-18 år" style="aspect-ratio: 589/436;" loading="lazy">
+                        <span class="img-caption">DST-statistik</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread 4 — Fra citater til Anton -->
+            <section class="spread" id="spread-4">
+                <p class="spread-eyebrow">Spread 04 · Målgruppe &amp; koncept</p>
+                <h2 class="spread-title">Fra citater til Anton</h2>
+                <p class="spread-body">Projektet startede med rigtige stemmer, ikke en tegnet figur. Målgruppearbejdet tog udgangspunkt i konkrete historier om unge i konflikt, og den første persona blev bygget som et klassisk, skriftligt profilark.</p>
+                <p class="spread-body">Først undervejs i processen opstod idéen om Anton, som vi kender ham i dag. Ved at bede ChatGPT om at generere et billede ud fra persona-profilen, fik jeg en løsning på en udfordring, jeg ikke vidste jeg havde: hvordan holder man tonen neutral, når man taler om et følsomt emne til en bred, sårbar målgruppe? Et AI-genereret, repræsentativt "ansigt" gjorde det muligt at tale om afmagt uden at pege på nogen bestemt, virkelig ung person.</p>
+
+                <div class="visual-transition">
+                    <div class="img-block">
+                        <div class="img-placeholder" style="aspect-ratio: 224/336;">→ Indsæt: persona-ark + målgruppetabel (før Anton)</div>
+                    </div>
+                    <span class="visual-transition-arrow" aria-hidden="true">→</span>
+                    <div class="img-block">
+                        <img class="img-photo" src="persona.png" alt="Antons persona-ark: 16 år, AI-genereret portræt, baggrund og citat om at miste besindelsen" style="aspect-ratio: 814/706;" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="img-block" style="margin-top: 20px; max-width: 420px;">
+                    <div class="img-placeholder" style="aspect-ratio: 16/9;">→ Indsæt: skærmbillede af den oprindelige ChatGPT-samtale fra Antons AI-log</div>
+                </div>
+
+                <blockquote class="pull-quote">
+                    <p>"Jeg prøver faktisk at holde mig i ro, men nogle gange koger det bare over. Så siger jeg ting, jeg ikke mener — og bagefter fortryder jeg det totalt."</p>
+                </blockquote>
+
+                <div class="chip-row">
+                    <span class="chip-row-item">Snapchat → venner, hverdagssnak</span>
+                    <span class="chip-row-item">TikTok → flugt når følelserne fylder</span>
+                    <span class="chip-row-item">Instagram → kigger på "de andre"</span>
+                </div>
+
+                <p class="spread-body" style="margin-top: clamp(24px, 4vw, 32px);">Sidens navn, brugdineord.dk, er en direkte opfordring til Anton — og til de unge, der spejler sig i ham. Ved at lade Anton fortælle sin egen historie først, viser siden en konkret strategi, brugeren frit kan tage med sig, uden at skulle "committe" sig til noget først. At Anton er AI-genereret og først opstod midtvejs, er samtidig et konkret eksempel på den iterative designproces: en løsning, der opstod, fordi et problem viste sig undervejs — ikke noget, der lå fast fra start.</p>
+            </section>
+
+            <!-- Spread 5 — Nudging i praksis -->
+            <section class="spread" id="spread-5">
+                <p class="spread-eyebrow">Spread 05 · Adfærdsdesign</p>
+                <h2 class="spread-title">Nudging i praksis</h2>
+                <p class="spread-body">Målet var at give unge en ny strategi at reagere med — ikke ved at belære, men ved at vise vejen.</p>
+
+                <div class="triptych">
+                    <div class="triptych-item">
+                        <h3 class="triptych-title">Framing</h3>
+                        <p>En tryg og klar ramme omkring et emne, der normalt er svært at tale om: afmagt. Anton er genkendelig for målgruppen, og gentagende struktur på tværs af siderne skaber troværdighed.</p>
+                    </div>
+                    <div class="triptych-item">
+                        <h3 class="triptych-title">Reciprocitet</h3>
+                        <p>Anton åbner selv op om sin strategi, uden at brugeren behøver at give noget til gengæld først. Når strategien virker for brugeren, er der langt større chance for, at de selv deler deres udfordring.</p>
+                    </div>
+                    <div class="triptych-item">
+                        <h3 class="triptych-title">Social proof</h3>
+                        <p>DST-tal, "mest læste historier" og en tælle-boks for ugens henvendelser viser brugeren, at de langt fra er alene med deres afmagt.</p>
+                    </div>
+                </div>
+
+                <div class="img-block">
+                    <img class="img-photo" src="historierne.png" alt="Figur der viser historiernes tre dele: emnet introduceres, Lykke hjælper med at forstå mekanikkerne, og der gives en ny strategi til fremtiden" style="aspect-ratio: 1431/288;" loading="lazy">
+                    <span class="img-caption">Historiernes 3 dele</span>
+                </div>
+                <div class="img-block">
+                    <img class="img-photo" src="taeller.png" alt="'Giv Anton noget at tale om' — tælleboks der viser hvor mange der allerede har delt deres historie, plus formular til at dele sin egen" style="aspect-ratio: 1454/655;" loading="lazy">
+                    <span class="img-caption">Opfordring til at dele egen historie</span>
+                </div>
+            </section>
+
+            <!-- Spread 6 — Designproces -->
+            <section class="spread" id="spread-6">
+                <p class="spread-eyebrow">Spread 06 · Designproces</p>
+                <h2 class="spread-title">Fra idé til grid</h2>
+                <p class="spread-body">Processen gik fra moodboard og styletile til lo-fi wireframes og til sidst et kodet, responsivt site — med et bevidst valg om at holde samme farver og skrifttype hele vejen igennem.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Farver (farveblinde-venlige) — genfindes 1:1 i det færdige sites CSS</span>
+                        <div class="swatch-row">
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #32A6A6;"></span>
+                                <span>#32A6A6 · teal</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #A63232;"></span>
+                                <span>#A63232 · rød</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #E8973A;"></span>
+                                <span>#E8973A · orange</span>
+                            </div>
+                            <div class="swatch">
+                                <span class="swatch-chip" style="background: #D1C6BA;"></span>
+                                <span>#D1C6BA · beige</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Typografi</span>
+                        <p class="fact-value">Barriecito (overskrifter) · Barlow (brødtekst)</p>
+                    </div>
+                    <div class="fact-row">
+                        <span class="fact-label">Mood</span>
+                        <p class="fact-value">Simpel · naturlig · balance · ro · blid · cool</p>
+                    </div>
+                </div>
+
+                <div class="img-sequence">
+                    <div class="img-sequence-item">
+                        <div class="img-placeholder" style="aspect-ratio: 212/195;">→ Indsæt billede</div>
+                        <span class="step-num">01</span>
+                        <p class="img-sequence-item-title">Moodboard</p>
+                        <p class="img-sequence-item-note">Mental sundhed hos unge</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <div class="img-placeholder" style="aspect-ratio: 212/184;">→ Indsæt billede</div>
+                        <span class="step-num">02</span>
+                        <p class="img-sequence-item-title">Persona-ark</p>
+                        <p class="img-sequence-item-note">Målgruppetabellen, før Anton fik et ansigt</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="styletyle.png" alt="Styletile: farvepalet, typografi og mood-ord for brugdineord.dk" style="aspect-ratio: 747/574;" loading="lazy">
+                        <span class="step-num">03</span>
+                        <p class="img-sequence-item-title">Styletile</p>
+                        <p class="img-sequence-item-note">Farver, typografi, mood</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="wireframe.png" alt="Lo-fi wireframes for forside, underside og kontaktside" style="aspect-ratio: 1051/630;" loading="lazy">
+                        <span class="step-num">04</span>
+                        <p class="img-sequence-item-title">Wireframes</p>
+                        <p class="img-sequence-item-note">Lo-fi: forside, underside, kontaktside</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="prototype.png" alt="Det færdige, kodede site vist på tre mobilskærme: forside, 'du er ikke alene' og bloggen" style="aspect-ratio: 1078/643;" loading="lazy">
+                        <span class="step-num">05</span>
+                        <p class="img-sequence-item-title">Færdigt site</p>
+                        <p class="img-sequence-item-note">Kodet, responsivt — med AI-genererede Anton</p>
+                    </div>
+                </div>
+
+                <p class="spread-body" style="margin-top: clamp(24px, 4vw, 32px);">Anton-figuren opstod som nævnt på forrige spread midtvejs i processen via ChatGPT — endnu et eksempel på, at processen ikke var lineær.</p>
+            </section>
+
+            <!-- Spread 7 — Tilgængelighed -->
+            <section class="spread" id="spread-7">
+                <p class="spread-eyebrow">Spread 07 · Tilgængelighed</p>
+                <h2 class="spread-title" style="max-width: 26ch;">Tilgængelighed er ikke en tjekliste — det er hvem, der bliver hørt</h2>
+                <p class="spread-body">Den unge målgruppe er ofte påvirket af koncentrationsbesvær, hormonel ubalance, ordblindhed og farveblindhed. WCAG 2.2's fire principper blev brugt som konkret designværktøj, ikke bare dokumentation.</p>
+
+                <div class="grid-2x2">
+                    <div class="grid-cell">
+                        <h3 class="grid-cell-title">Perceivable</h3>
+                        <p>Alt-tekst på billeder med betydning for budskabet, logisk læserækkefølge til skærmlæsere, tydelige link-/knapbeskrivelser.</p>
+                    </div>
+                    <div class="grid-cell">
+                        <h3 class="grid-cell-title">Operable</h3>
+                        <p>Brødkrummer på alle sider, fast navigation der følger med ved scroll — vigtigt for en målgruppe, der let mister overblikket.</p>
+                    </div>
+                    <div class="grid-cell">
+                        <h3 class="grid-cell-title">Understandable</h3>
+                        <p>Tone-of-voice målrettet unge, genkendelige layoutelementer på tværs af siderne, farvekontraster testet for farveblindhed.</p>
+                    </div>
+                    <div class="grid-cell">
+                        <h3 class="grid-cell-title">Robust</h3>
+                        <p>Grid-baseret, responsivt layout, så indholdet holder sig intakt på tværs af enheder.</p>
+                    </div>
+                </div>
+
+                <div class="img-block" style="max-width: 640px;">
+                    <img class="img-photo" src="brodkrumme.png" alt="Brødkrummenavigation: Brugdineord.dk / Historierne / Historie om konflikt mellem venner" style="aspect-ratio: 759/55;" loading="lazy">
+                    <span class="img-caption">Brødkrummer / navigation på sitet</span>
+                </div>
+                <div class="img-block" style="max-width: 640px;">
+                    <img class="img-photo" src="farveblindhed.png" alt="Adobe Color-farvehjul, der bekræfter at styletilens fem farver er egnet til farveblinde" style="aspect-ratio: 1063/516;" loading="lazy">
+                    <span class="img-caption">Adobe Color-farvehjul fra styletile-researchen</span>
+                </div>
+            </section>
+
+            <!-- Spread 8 — Test & feedback -->
+            <section class="spread" id="spread-8">
+                <p class="spread-eyebrow">Spread 08 · Test &amp; feedback</p>
+                <h2 class="spread-title">Holder idéen vand?</h2>
+                <p class="spread-body">Da konceptet stadig var i sin vorden, blev brugertesten designet til at teste selve idéen — ikke detaljerne. Hypotesen: en AI-agtig karakter som Anton får unge til at udforske siden og i sidste ende dele deres egne historier, fordi det er kreativ storytelling i et delbart, nutidigt format.</p>
+
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="step-num">01</span>
+                        <p>6-sekunders scroll-video af mobilsitet, delt via egne SoMe-kanaler.</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">02</span>
+                        <p>Spørgeskema med 26 randomiserede ord, heraf 6 målord.</p>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-num">03</span>
+                        <p>19 besvarelser i alt — fokus lagt på de 3, der matchede målgruppen.</p>
+                    </div>
+                </div>
+
+                <div class="word-groups">
+                    <div>
+                        <span class="word-group-label">Positive</span>
+                        <p class="word-list is-positive">Kreativ · Simpel · Ro</p>
+                    </div>
+                    <div>
+                        <span class="word-group-label">Kritiske</span>
+                        <p class="word-list is-critical">Kedelig · Forvirrende · Ufærdig</p>
+                    </div>
+                </div>
+
+                <p class="spread-body">Hvad testen ændrede: Det "ufærdige" indtryk betød, at små detaljer blev strammet op, og at storytelling-elementet (bl.a. via de 6 C'er) blev styrket for at gøre indhold og design mere levende og målrettet.</p>
+
+                <div class="img-row">
+                    <div class="img-block" style="max-width: 220px;">
+                        <video class="img-video" src="Videoklip.mp4" style="aspect-ratio: 296/640;" controls muted loop playsinline aria-label="6-sekunders scroll-video af brugdineord.dk på mobil"></video>
+                    </div>
+                    <div class="img-block" style="flex-grow: 2;">
+                        <div class="img-placeholder" style="aspect-ratio: 564/360;">→ Indsæt: spørgeskema-resultater, mest valgte ord (alle 20 testere)</div>
+                        <span class="img-caption">Kun 3 af de 20 testere var i den reelle målgruppe (15–18 år) — det er deres ord, ikke det fulde gennemsnit, der har styret designbeslutningerne</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread 9 — Det færdige resultat -->
+            <section class="spread" id="spread-9">
+                <p class="spread-eyebrow">Spread 09 · Det færdige resultat</p>
+                <h2 class="spread-title">Brugdineord.dk</h2>
+                <p class="spread-body">Det færdige site samler Anton, adfærdsdesign og tilgængelighed i én sammenhængende oplevelse — testet, justeret og klar til at blive brugt.</p>
+
+                <div class="img-sequence is-three">
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="moibl-forside.png" alt="Forsiden af brugdineord.dk på mobil" style="aspect-ratio: 416/854;" loading="lazy">
+                        <p class="img-sequence-item-title">Forside</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="historie.png" alt="En historie-side: 'Konflikt mellem venner'" style="aspect-ratio: 415/851;" loading="lazy">
+                        <p class="img-sequence-item-title">Historie: Konflikt mellem venner</p>
+                    </div>
+                    <div class="img-sequence-item">
+                        <img class="img-photo" src="taeller-mobil.png" alt="Kontaktsiden, hvor brugeren kan dele sin egen historie" style="aspect-ratio: 414/853;" loading="lazy">
+                        <p class="img-sequence-item-title">Kontaktside</p>
+                    </div>
+                </div>
+
+                <p class="img-caption" style="margin-top: 24px;">heididesire.dk/brugdineord</p>
+            </section>
+
+            <!-- Spread 10 — Refleksion & læring -->
+            <section class="spread" id="spread-10">
+                <p class="spread-eyebrow">Spread 10 · Refleksion &amp; læring</p>
+                <h2 class="spread-title">Karakteren, jeg valgte at vise frem</h2>
+
+                <div class="stat-highlight">
+                    <span class="stat-number">7</span>
+                    <p class="stat-desc">— den eneste karakter i hele studieforløbet, der ikke blev en 10.</p>
+                </div>
+
+                <p class="spread-body">Det ærlige svar er, at jeg blev så grebet af emnet og min egen research, at jeg undervejs glemte, at opgaven i bunden handlede om webtilgængelighed. Det er derfor, det her er det eneste projekt på hele studiet, jeg ikke fik topkarakter for. Men det er også præcis derfor, jeg har valgt netop det som case study.</p>
+                <p class="spread-body">Jeg ved præcis, hvorfor karakteren ikke afspejler idéen, energien eller ambitionen i projektet — den afspejler den faglige udførsel, bedømt på webtilgængelighedens egne, snævre præmisser. Næsten et år efter er det stadig det projekt, min omgangskreds spørger ind til. Det siger noget om, hvad der opstår, når man tør lade et alvorligt emne vokse sig stort og stærkt, selv når det trækker fokus fra den oprindelige opgave.</p>
+                <p class="spread-body">Jeg viser karakteren, fordi jeg ikke er bange for den. Den er ikke et symbol på et dårligt projekt — den er et symbol på, hvor let det er at blive revet med af noget, der er værd at blive revet med af.</p>
+
+                <div class="fact-card">
+                    <div class="fact-row">
+                        <span class="fact-label">Hvad jeg tager med mig</span>
+                    </div>
+                    <div class="step-list" style="margin-top: 0;">
+                        <div class="step-item">
+                            <span class="step-num">01</span>
+                            <p>At tilgængelighed er stærkest, når det er indbygget i konceptet fra start — ikke lagt oven på bagefter.</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">02</span>
+                            <p>At en brugertest tidligt i processen kan redde et koncept, selv når resultaterne er ubehagelige at læse.</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">03</span>
+                            <p>At faglig disciplin og passion for et emne ikke altid trækker i samme retning — og at det er en balance, jeg tager med mig ind i alle projekter siden.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aside-box">
+                    <span class="aside-label">Eftertanke</span>
+                    <p>Da jeg viste Anton frem for min omgangskreds, var opbakningen langt større, end jeg havde forventet — flere blev direkte skuffede over, at det "bare" var et studieprojekt, og ikke noget jeg ville gå videre med. Det siger nok mest om, hvor stærkt et koncept kan blive, når det tager udgangspunkt i noget ægte — men det er givetvis også en historie for en anden dag.</p>
+                </div>
+            </section>
+
+            <p class="pending-note"><strong>Under opbygning:</strong> teksten på alle 10 spreads er endelig og godkendt, og de fleste billeder er nu sat ind. Fem billeder mangler stadig — de mærkede bokse ovenfor viser, hvad de skal vise: målgruppetabellen fra før Anton fik et ansigt og skærmbilledet af den oprindelige ChatGPT-samtale (spread 4), moodboardet og persona-arket i procesrækken (spread 6), samt et udsnit af spørgeskema-resultaterne (spread 8).</p>
+
+            <a class="back-link" href="index.html">← Tilbage til case studies</a>
+        </main>
+
+        <footer class="footer">
+            <span>VIBY SJÆLLAND, DANMARK</span>
+            <span>Fuld portfolio på vej</span>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejsen — Heidi Desire Kristoffersen</title>
+    <meta name="description" content="Studieforløbet gennem multimediedesigner-uddannelsen, semester for semester.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page dark" id="page">
+        <div class="grid-overlay"></div>
+        <div class="glow" id="glow"></div>
+
+        <header class="header">
+            <div class="brand">
+                <span class="status-dot"></span>
+                <span>HDK — Multimediedesigner</span>
+            </div>
+            <nav class="site-nav" aria-label="Hovednavigation">
+                <a href="index.html">Forside</a>
+                <a href="rejsen.html" class="active">Rejsen</a>
+                <a href="case-studies/index.html">Case studies</a>
+                <a href="projekter.html">Projekter</a>
+                <a href="ai-log.html">AI log</a>
+                <a href="om-mig.html">Om mig</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
+                <span id="themeLabel">Lys</span>
+            </button>
+        </header>
+
+        <main class="main main-static">
+            <p class="eyebrow">Studieforløb</p>
+            <h1 class="title">Rejsen</h1>
+            <p class="manifest">Fire semestre på vej til at blive multimediedesigner — fra de første gruppeprojekter til at stå med egne virksomheder i hånden. To af projekterne har jeg udfoldet som case studies.</p>
+
+            <div class="semester">
+                <div class="semester-head">
+                    <span class="semester-num">01</span>
+                    <span class="semester-status">Afsluttet</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-name">Prototype</span>
+                        <span class="timeline-tag">Gruppe</span>
+                    </div>
+                    <div class="timeline-item is-case">
+                        <span class="timeline-name">Webtilgængelighed</span>
+                        <span class="timeline-tag">Individuelt</span>
+                        <p class="timeline-note">Brugdineord.dk — nudging, WCAG-tilgængelighed og persona-arbejdet med Anton.</p>
+                        <a class="case-link" href="case-studies/webtilgaengelighed.html">→ Se case study</a>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-name">Real Life — Kystnær</span>
+                        <span class="timeline-tag">Gruppe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semester">
+                <div class="semester-head">
+                    <span class="semester-num">02</span>
+                    <span class="semester-status">Afsluttet</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-name">Four Media</span>
+                        <span class="timeline-tag">Gruppe</span>
+                    </div>
+                    <div class="timeline-item is-trip">
+                        <span class="timeline-name">Studietur — Barcelona</span>
+                    </div>
+                    <div class="timeline-item is-case">
+                        <span class="timeline-name">Cybersikker</span>
+                        <span class="timeline-tag">Individuelt</span>
+                        <p class="timeline-note">Interaktiv chatbot-simulation om studerendes sikkerhedsadfærd online — research, Figma-designsystem og AI-assisteret udvikling.</p>
+                        <a class="case-link" href="case-studies/cybersikker.html">→ Se case study</a>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-name">Real Life — SassieCat</span>
+                        <span class="timeline-tag">Gruppe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semester">
+                <div class="semester-head">
+                    <span class="semester-num">03</span>
+                    <span class="semester-status">I gang</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-name">Real Life — GLS Danmark</span>
+                        <span class="timeline-tag">Gruppe</span>
+                        <p class="timeline-note">GLS AI Playbook.</p>
+                    </div>
+                    <div class="timeline-item is-current">
+                        <span class="timeline-name">Portefølje</span>
+                        <span class="timeline-tag" style="position: relative;">
+                            Individuelt · i gang
+                            <span class="hotspot" style="left: 100%; top: 50%; margin-left: 14px; transform: translateY(-50%);">
+                                <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
+                                <span class="hotspot-marker" aria-hidden="true"></span>
+                                <span class="hotspot-reveal">Fund #3 — placeholder.</span>
+                            </span>
+                        </span>
+                        <p class="timeline-note">Den side, du kigger på lige nu, er en del af dette projekt.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-name">Research</span>
+                        <span class="timeline-tag">Kommende</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-name">Fra research til produktion</span>
+                        <span class="timeline-tag">Kommende</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semester">
+                <div class="semester-head">
+                    <span class="semester-num">04</span>
+                    <span class="semester-status">Kommende — praktik</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <a class="timeline-name" href="projekter.html" style="text-decoration:none; border-bottom:1px solid var(--chip-border);">DUF</a>
+                        <span class="timeline-tag">Iværksætter</span>
+                    </div>
+                    <div class="timeline-item">
+                        <a class="timeline-name" href="projekter.html" style="text-decoration:none; border-bottom:1px solid var(--chip-border);">Bohemi Flow</a>
+                        <span class="timeline-tag">Iværksætter</span>
+                    </div>
+                    <div class="timeline-item">
+                        <a class="timeline-name" href="projekter.html" style="text-decoration:none; border-bottom:1px solid var(--chip-border);">Mikromod</a>
+                        <span class="timeline-tag">Iværksætter</span>
+                    </div>
+                </div>
+            </div>
+
+            <a class="back-link" href="projekter.html">→ Se hvor de tre iværksætter-projekter står lige nu</a>
+        </main>
+
+        <footer class="footer">
+            <span>VIBY SJÆLLAND, DANMARK</span>
+            <span>Fuld portfolio på vej</span>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

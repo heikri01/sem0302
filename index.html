@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="page">
+    <div class="page dark" id="page">
         <div class="grid-overlay"></div>
         <div class="glow" id="glow"></div>
 
@@ -20,39 +20,72 @@
                 <span class="status-dot"></span>
                 <span>HDK — Multimediedesigner</span>
             </div>
+            <nav class="site-nav" aria-label="Hovednavigation">
+                <a href="index.html" class="active">Forside</a>
+                <a href="rejsen.html">Rejsen</a>
+                <a href="case-studies/index.html">Case studies</a>
+                <a href="projekter.html">Projekter</a>
+                <a href="ai-log.html">AI log</a>
+                <a href="om-mig.html">Om mig</a>
+            </nav>
             <button class="theme-toggle" id="themeToggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
-                <span id="themeLabel">Mørk</span>
+                <span id="themeLabel">Lys</span>
             </button>
         </header>
 
         <main class="main">
-            <div class="hero">
-                <div class="hero-text">
-                    <p class="eyebrow">Portfolio under opbygning — efterår 2026</p>
-
-                    <h1 class="title">Heidi Desire<br>Kristoffersen</h1>
-
-                    <p class="manifest">Jeg er en multimediedesigner, der bygger digitale broer mellem mennesker.</p>
-
-                    <div class="chips">
-                        <span class="chip">Design</span>
-                        <span class="chip">Iværksætteri</span>
-                        <span class="chip">UX &amp; web</span>
+            <div class="welcome">
+                <div class="welcome-portrait">
+                    <img src="img/portraet-heidi.png" alt="Portræt af Heidi Desire Kristoffersen">
+                </div>
+                <div>
+                    <div class="welcome-name">Heidi Desire Kristoffersen</div>
+                    <div class="welcome-sub" style="position: relative; display: inline-block;">
+                        byder velkommen
+                        <span class="hotspot" style="left: 100%; top: 50%; margin-left: 14px; transform: translateY(-50%);">
+                            <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
+                            <span class="hotspot-marker" aria-hidden="true"></span>
+                            <span class="hotspot-reveal">Fund #2 — placeholder.</span>
+                        </span>
                     </div>
                 </div>
+            </div>
 
-                <div class="portrait-wrap">
-                    <div class="portrait">
-                        <img src="img/portraet-heidi.png" alt="Illustreret portræt af Heidi Desire Kristoffersen">
-                        <span class="portrait-ring"></span>
-                    </div>
+            <p class="eyebrow">Velkommen ind</p>
+            <h1 class="title">Sådan tænker jeg</h1>
+            <p class="manifest">Jeg bygger digitale broer mellem mennesker — det er tre bevægelser, der går igen i alt, hvad jeg laver. Gå ind, hvor du er mest nysgerrig.</p>
+
+            <div class="bubble-wrap">
+                <div class="bubble bubble-01">
+                    <span class="bubble-index">01</span>
+                    <div class="bubble-name">Forstå</div>
+                    <p class="bubble-text">Jeg starter sjældent med løsningen. Jeg starter med at undersøge, hvad der egentlig er på spil.</p>
+                    <span class="bubble-arrow">→ udforsk</span>
+                </div>
+                <div class="bubble bubble-02">
+                    <span class="bubble-index">02</span>
+                    <div class="bubble-name">Forbinde</div>
+                    <p class="bubble-text">Jeg bygger digitale broer mellem mennesker, idéer og teknologi — det er her, jeg er stærkest.</p>
+                    <span class="bubble-arrow">→ udforsk</span>
+                </div>
+                <div class="bubble bubble-03">
+                    <span class="bubble-index">03</span>
+                    <div class="bubble-name">Forme</div>
+                    <p class="bubble-text">Herfra bliver det til kode, design og noget, man rent faktisk kan bruge.</p>
+                    <span class="bubble-arrow">→ udforsk</span>
+                </div>
+
+                <div class="hotspot" style="left: 5%; top: 88%;">
+                    <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
+                    <span class="hotspot-marker" aria-hidden="true"></span>
+                    <span class="hotspot-reveal">Fund #1 — placeholder.</span>
                 </div>
             </div>
 
             <div class="info-grid">
                 <div class="info-col">
                     <span class="info-label">Hvad der kommer</span>
-                    <p class="info-text">Ni cases fra min uddannelse som multimediedesigner — fra webtilgængelighed og cybersikkerhed til mine egne virksomheder.</p>
+                    <p class="info-text">Rejsen gennem fire semestre, to uddybende case studies, og de projekter jeg bygger lige nu som selvstændig.</p>
                 </div>
 
                 <div class="info-col">
