@@ -5,6 +5,13 @@
   var themeLabel = document.getElementById('themeLabel');
   var hotspots = Array.prototype.slice.call(document.querySelectorAll('.hotspot'));
 
+  // Skattekisten til det sidste fund. Stien regnes ud fra, hvor main.js
+  // ligger, så den virker både på forsiden og inde i case-studies/.
+  var CHEST_SRC = 'img/skattekiste.svg';
+  try {
+    if (document.currentScript) CHEST_SRC = new URL('../img/skattekiste.svg', document.currentScript.src).href;
+  } catch (e) {}
+
   var dark = true;
 
   themeToggle.addEventListener('click', function () {
@@ -62,6 +69,10 @@
       'Det går fremad. For det meste.'
     ],
     [
+      'Jeg tror på løsninger, der gør mere end én ting',
+      'Jeg bliver ekstra glad, når én løsning løser tre problemer på én gang — Win-win-win er min slags magi..'
+    ],
+    [
       'Jeg behøver ikke selv være den bedste til alt.',
       'Jeg vil hellere være god til at finde ud af, hvem der er god til hvad — og hvordan vi får det til at spille sammen.'
     ],
@@ -106,13 +117,24 @@
     var trigger = spot.querySelector('.hotspot-trigger');
     var skat = SKATTE[index];
     var isFinale = index === SKATTE.length - 1;
-    var label = isFinale ? 'Sidste fund' : 'Fund ' + (index + 1) + ' af ' + SKATTE.length;
+    var label = isFinale ? 'Sidste fund · du fandt skatten!' : 'Fund ' + (index + 1) + ' af ' + SKATTE.length;
 
-    var html = '<span class="skat-label">' + label + '</span>';
+    var html = '';
+    if (isFinale) {
+      html += '<span class="skat-chest-wrap"><img class="skat-chest" src="' + CHEST_SRC + '" alt=""></span>';
+    }
+    html += '<span class="skat-label">' + label + '</span>';
     for (var i = 0; i < skat.length; i++) html += '<p>' + skat[i] + '</p>';
     reveal.innerHTML = html;
 
+    // Findes ikonet ikke (endnu), fjernes pladsen til det igen.
+    var chest = reveal.querySelector('.skat-chest');
+    if (chest) chest.addEventListener('error', function () {
+      if (chest.parentNode) chest.parentNode.remove();
+    });
+
     spot.classList.add('is-found');
+    spot.classList.toggle('is-finale', isFinale);
     if (trigger) trigger.setAttribute('aria-label', label + ' — tryk for at vise igen');
   }
 
@@ -230,3 +252,110 @@
     if (hotspots.length) checkHotspots(e.clientX, e.clientY);
   }, { passive: true });
 })();
+
+/* ------------------------------------------------------------------
+   Rejsen — bløde, bølgede linjer i tidslinjen (update-design, 28/9)
+
+   Linjen tegnes som SVG ud fra, hvor prikkerne faktisk sidder, så den
+   følger med, når teksten brydes anderledes (mobil, skift af font osv.).
+   → Alle stræk er bløde S-kurver, der skifter retning for hvert stræk.
+   → To fine tråde bølger med ved siden af, men i deres egen rytme
+     (se STRANDS), så linjen ikke ligner en lyskæde.
+   Uden JavaScript vises den oprindelige lige linje (border-left i CSS).
+   ------------------------------------------------------------------ */
+(function () {
+  var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
+  if (!timelines.length) return;
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var X = 30.5;          // linjens x inde i svg'en (svg'en starter 30px til venstre for tidslinjen)
+  var DOT = 10.5;        // prikkens midte målt fra toppen af punktet
+
+  function points(tl) {
+    var ys = [];
+    tl.querySelectorAll(':scope > .timeline-item').forEach(function (it) {
+      ys.push(it.offsetTop + DOT);
+    });
+    return ys;
+  }
+
+  // Blød S-kurve fra y0 til y1 (retningen skifter for hvert stræk)
+  // Fine ekstra tråde, der bølger med hovedlinjen uden at følge den helt
+  // (hver med sin egen forskydning, bølgehøjde og rytme). Tilføj/fjern en
+  // linje her for at få flere eller færre tråde.
+  var STRANDS = [
+    { offset: -2.2, amp: 1.45, bend: .20, seed: 3 },
+    { offset:  2.6, amp: .55,  bend: .42, seed: 11 }
+  ];
+
+  // Et lille, fast "tilfældigt" tal pr. stræk, så trådene varierer — men
+  // ser ens ud hver gang siden tegnes.
+  function noise(n) { var s = Math.sin(n * 12.9898) * 43758.5453; return s - Math.floor(s); }
+
+  // Blød S-kurve fra y0 til y1 (retningen skifter for hvert stræk)
+  function wave(y0, y1, dir, o) {
+    o = o || { offset: 0, amp: 1, bend: .3 };
+    var h = y1 - y0;
+    var a = Math.min(9, h / 5) * dir * o.amp;
+    var x = X + o.offset;
+    return ' C' + (x + a).toFixed(1) + ' ' + (y0 + h * o.bend).toFixed(1) + ' ' +
+      (x - a).toFixed(1) + ' ' + (y0 + h * (1 - o.bend)).toFixed(1) + ' ' + x + ' ' + y1;
+  }
+
+  function draw(tl) {
+    var old = tl.querySelector(':scope > svg.timeline-line');
+    if (old) old.remove();
+
+    var H = tl.offsetHeight;
+    var ys = [0].concat(points(tl), [H]);
+    var d = 'M' + X + ' 0';
+    for (var i = 1; i < ys.length; i++) {
+      d += wave(ys[i - 1], ys[i], i % 2 ? 1 : -1);
+    }
+
+    var strands = STRANDS.map(function (s) {
+      var sd = 'M' + (X + s.offset) + ' 0';
+      for (var i = 1; i < ys.length; i++) {
+        var v = noise(i * 7 + s.seed);           // 0–1, forskellig pr. stræk og tråd
+        sd += wave(ys[i - 1], ys[i], i % 2 ? 1 : -1, {
+          offset: s.offset,
+          amp: s.amp * (.75 + v * .5),           // bølgehøjden varierer lidt
+          bend: Math.min(.45, s.bend + (v - .5) * .12)
+        });
+      }
+      return sd;
+    });
+
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'timeline-line');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    svg.setAttribute('width', '60');
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 60 ' + H);
+    strands.forEach(function (sd) {
+      var fine = document.createElementNS(NS, 'path');
+      fine.setAttribute('d', sd);
+      fine.setAttribute('class', 'timeline-strand');
+      svg.appendChild(fine);
+    });
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', d);
+    svg.appendChild(path);
+    tl.insertBefore(svg, tl.firstChild);
+    tl.classList.add('has-curve');
+  }
+
+  function drawAll() {
+    timelines.forEach(draw);
+  }
+
+  var timer;
+  function redraw() { clearTimeout(timer); timer = setTimeout(drawAll, 120); }
+
+  drawAll();
+  window.addEventListener('resize', redraw);
+  window.addEventListener('load', drawAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
+})();
+
