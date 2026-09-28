@@ -226,10 +226,7 @@
   }
 
   window.addEventListener('pointermove', function (e) {
-    var w = window.innerWidth || 1;
-    var h = window.innerHeight || 1;
-    glow.style.left = (e.clientX / w) * 100 + '%';
-    glow.style.top = (e.clientY / h) * 100 + '%';
+    if (glow) glow.style.transform = 'translate3d(' + e.clientX + 'px, ' + e.clientY + 'px, 0)';
     if (hotspots.length) checkHotspots(e.clientX, e.clientY);
   }, { passive: true });
 })();

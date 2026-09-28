@@ -48,6 +48,7 @@ a { color: inherit; }
 
 .page {
   position: relative;
+  isolation: isolate; /* lyskegle og gitter kan ligge bag alt indhold */
   min-height: 100vh;
   overflow-x: hidden;
   background: var(--bg);
@@ -74,6 +75,7 @@ a { color: inherit; }
 .grid-overlay {
   position: absolute;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
   background-image: linear-gradient(to right, currentColor 1px, transparent 1px);
   background-size: 25% 100%;
@@ -81,18 +83,34 @@ a { color: inherit; }
 }
 
 .glow {
-  position: absolute;
-  width: 520px;
-  height: 520px;
+  /* Lyskeglen: en blød grøn tone, der ligger BAG tekst og billeder
+     og følger musen næsten uden forsinkelse. */
+  --glow-color: var(--forsta);
+  --glow-strength: .20;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 440px;
+  height: 440px;
+  margin: -220px 0 0 -220px; /* centrér kuglen om musen */
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(90px);
-  background: var(--forsta);
-  opacity: .28;
-  left: 78%;
-  top: 26%;
-  transform: translate(-50%, -50%);
-  transition: left .9s cubic-bezier(.16,1,.3,1), top .9s cubic-bezier(.16,1,.3,1), background .5s ease;
+  filter: blur(80px);
+  background: var(--glow-color);
+  opacity: var(--glow-strength);
+  transform: translate3d(78vw, 26vh, 0);
+  transition: transform .12s ease-out, background .5s ease;
+  will-change: transform;
+}
+
+.page.dark .glow {
+  --glow-color: var(--forsta-light); /* dybere grøn i mørkt tema */
+  --glow-strength: .20;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow { transition: background .5s ease; }
 }
 
 .header {
