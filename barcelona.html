@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postkort fra Barcelona — Heidi Desire Kristoffersen</title>
+    <meta name="description" content="Studieturen til Barcelona i marts 2026 — et kort fyldt med postkort, og en fotosafari gennem det gotiske kvarter.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page dark" id="page">
+        <div class="grid-overlay"></div>
+        <div class="glow" id="glow"></div>
+
+        <header class="header">
+            <div class="brand">
+                <span class="status-dot"></span>
+                <span>HDK — Multimediedesigner</span>
+            </div>
+            <nav class="site-nav" aria-label="Hovednavigation">
+                <a href="index.html">Forside</a>
+                <a href="rejsen.html" class="active">Rejsen</a>
+                <a href="case-studies/index.html">Case studies</a>
+                <a href="projekter.html">Projekter</a>
+                <a href="ai-log.html">AI log</a>
+                <a href="om-mig.html">Om mig</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Skift mellem lyst og mørkt tema">
+                <span id="themeLabel">Lys</span>
+            </button>
+        </header>
+
+        <main class="main main-wide">
+            <p class="eyebrow">Studietur · 2. semester · 22.–27. marts 2026</p>
+            <h1 class="title">Postkort fra Barcelona</h1>
+            <p class="manifest">En uge med designskoler, bureauer, Gaudí og Banksy — og første gang, online studerende var med på turen. Før musen hen over kortet, så popper postkortene frem. Klik for at åbne dem.</p>
+
+            <!-- ---- Kortet ---- -->
+            <section class="bcn-map-section" aria-labelledby="kortTitel">
+                <h2 class="sr-only" id="kortTitel">Kort over stederne</h2>
+
+                <ul class="bcn-legend" aria-label="Farvernes betydning">
+                    <li><span class="bcn-legend-dot is-forsta" aria-hidden="true"></span>Faglige besøg</li>
+                    <li><span class="bcn-legend-dot is-forbind" aria-hidden="true"></span>Fællesskab</li>
+                    <li><span class="bcn-legend-dot is-forme" aria-hidden="true"></span>Kunst &amp; arkitektur</li>
+                </ul>
+
+                <div class="bcn-map" id="bcnMap">
+                    <svg class="bcn-map-svg" viewBox="220 60 640 480" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+                        <defs>
+                            <pattern id="bcnGrid" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                                <path d="M0 0H16M0 0V16" class="bcn-grid-line"/>
+                            </pattern>
+                            <pattern id="bcnWaves" width="46" height="18" patternUnits="userSpaceOnUse">
+                                <path d="M2 10q5.5-5 11 0t11 0" class="bcn-wave"/>
+                            </pattern>
+                            <clipPath id="bcnEixample">
+                                <path d="M300 330 L330 262 L400 205 L470 185 L560 178 L640 225 L668 262 L612 300 L552 318 L470 322 L400 338 Z"/>
+                            </clipPath>
+                        </defs>
+
+                        <!-- land -->
+                        <rect x="200" y="40" width="700" height="520" class="bcn-land"/>
+
+                        <!-- Collserola-bakkerne mod nordvest -->
+                        <path d="M220 118 C260 96 300 108 332 86 S400 66 430 60" class="bcn-contour"/>
+                        <path d="M220 140 C270 118 300 130 345 106 S410 84 450 72" class="bcn-contour is-faint"/>
+
+                        <!-- Eixample: det diagonale gadenet -->
+                        <rect x="280" y="160" width="420" height="200" fill="url(#bcnGrid)" clip-path="url(#bcnEixample)"/>
+
+                        <!-- store gader -->
+                        <path d="M220 283 L860 90" class="bcn-street is-major"/>
+                        <path d="M293 450 L405 340 L488 254 L576 166 L650 96" class="bcn-street is-major"/>
+                        <path d="M450 330 L508 442" class="bcn-street is-rambla"/>
+
+                        <!-- Montjuïc -->
+                        <ellipse cx="438" cy="498" rx="74" ry="44" transform="rotate(-24 438 498)" class="bcn-contour"/>
+                        <ellipse cx="440" cy="502" rx="48" ry="27" transform="rotate(-24 440 502)" class="bcn-contour"/>
+                        <ellipse cx="444" cy="506" rx="22" ry="12" transform="rotate(-24 444 506)" class="bcn-contour"/>
+
+                        <!-- Parc de la Ciutadella -->
+                        <rect x="552" y="296" width="60" height="50" rx="14" transform="rotate(-10 582 321)" class="bcn-park"/>
+
+                        <!-- havet -->
+                        <path d="M340 600 L446 548 L470 500 L505 452 L548 432 L586 470 L602 486 L640 420 L683 342 L728 262 L781 202 L863 102 L920 30 L920 600 Z" class="bcn-sea"/>
+                        <path d="M340 600 L446 548 L470 500 L505 452 L548 432 L586 470 L602 486 L640 420 L683 342 L728 262 L781 202 L863 102 L920 30 L920 600 Z" fill="url(#bcnWaves)" class="bcn-sea-waves"/>
+                        <path d="M446 548 L470 500 L505 452 L548 432 L586 470 L602 486 L640 420 L683 342 L728 262 L781 202 L863 102 L920 30" class="bcn-coast"/>
+
+                        <!-- stednavne -->
+                        <text x="318" y="178" class="bcn-district">Gràcia</text>
+                        <text x="392" y="262" class="bcn-district">Eixample</text>
+                        <text x="500" y="414" class="bcn-district">Barri Gòtic</text>
+                        <text x="566" y="394" class="bcn-district">El Born</text>
+                        <text x="690" y="228" class="bcn-district">Poblenou</text>
+                        <text x="352" y="552" class="bcn-district">Montjuïc</text>
+                        <text x="560" y="448" class="bcn-district">Barceloneta</text>
+                        <text x="580" y="116" class="bcn-street-label" transform="rotate(-16.8 580 116)">Av. Diagonal</text>
+                        <text x="0" y="0" class="bcn-street-label" transform="translate(438 366) rotate(62.6)">La Rambla</text>
+                        <text x="734" y="440" class="bcn-sea-label">Middelhavet</text>
+
+                        <!-- nordpil + målestok -->
+                        <g class="bcn-compass" transform="translate(252 480)">
+                            <path d="M0 -20 L7 6 L0 1 L-7 6 Z"/>
+                            <text x="0" y="-26" text-anchor="middle">N</text>
+                        </g>
+                        <g class="bcn-scale" transform="translate(236 524)">
+                            <path d="M0 0 V6 H90 V0"/>
+                            <text x="45" y="-5" text-anchor="middle">1 km</text>
+                        </g>
+                    </svg>
+
+                    <!-- nålene og postkort-forhåndsvisningen bygges af js/barcelona.js -->
+                    <div class="bcn-pins" id="bcnPins"></div>
+                    <div class="bcn-preview" id="bcnPreview" aria-hidden="true"></div>
+                </div>
+
+                <h3 class="bcn-list-title">Alle postkort</h3>
+                <ul class="bcn-list" id="bcnList"></ul>
+                <noscript><p class="ai-log-source">Kortet og postkortene kræver JavaScript for at blive vist.</p></noscript>
+            </section>
+
+            <!-- ---- Fotosafari ---- -->
+            <section class="spread bcn-safari-section" id="fotosafari" aria-labelledby="safariTitel">
+                <p class="spread-eyebrow">Mandag 23/3 · kl. 11–12 · Barri Gòtic</p>
+                <h2 class="spread-title" id="safariTitel">
+                    Fotosafari i det gotiske kvarter
+                    <span class="hotspot is-inline">
+                        <button type="button" class="hotspot-trigger" aria-label="Skjult fund — tryk for at afsløre"></button>
+                        <span class="hotspot-marker" aria-hidden="true"></span>
+                        <span class="hotspot-reveal">Et lille fund — slå JavaScript til for at se det.</span>
+                    </span>
+                </h2>
+                <p class="spread-body">Turens første opgave: i små grupper skulle vi dokumentere det, der inspirerede os i bybilledet — arkitektur, streetart, mad og mennesker, med særligt øje for håndmalede skilte, typografi og små detaljer som gamle dørhåndtag og postkasser. Vi fik en liste med ti steder. Her er de ni, vi nåede, i den rækkefølge vi tog dem.</p>
+
+                <div class="bcn-safari" id="bcnSafari">
+                    <div class="bcn-safari-track" id="bcnSafariTrack" tabindex="0" role="region" aria-roledescription="karrusel" aria-label="Fotosafariens ni stop — brug piletasterne for at skifte"></div>
+
+                    <div class="bcn-safari-controls">
+                        <button type="button" class="bcn-safari-arrow" id="bcnSafariPrev" aria-label="Forrige stop">←</button>
+                        <ol class="bcn-safari-timeline" id="bcnSafariTimeline" aria-label="Vælg stop"></ol>
+                        <button type="button" class="bcn-safari-arrow" id="bcnSafariNext" aria-label="Næste stop">→</button>
+                    </div>
+                    <p class="bcn-safari-status" id="bcnSafariStatus" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <!-- ---- Afslutning ---- -->
+            <section class="spread" aria-labelledby="efterTitel">
+                <p class="spread-eyebrow">Hjemme igen</p>
+                <h2 class="spread-title" id="efterTitel">Du burde næsten opleve det selv</h2>
+                <p class="spread-body">Efter turen var opgaven at formidle den videre. Jeg lavede et postkort — der voksede til et helt nyhedsbrev til kommende studerende, som en slags salgstale for studieturen. Det er derfra, tanken om postkortene på denne side kommer.</p>
+                <div class="pull-quote">
+                    <p>Det er en blanding af faglighed, nye relationer og oplevelser, der bare ikke føles som undervisning på den klassiske måde.</p>
+                </div>
+                <div class="case-links">
+                    <a class="case-link" href="img/barcelona/web/nyhedsbrev-barcelona.pdf" target="_blank" rel="noopener">→ Læs hele nyhedsbrevet (PDF)</a>
+                </div>
+            </section>
+
+            <a class="back-link" href="rejsen.html">← Tilbage til Rejsen</a>
+        </main>
+
+        <footer class="footer">
+            <span>VIBY SJÆLLAND, DANMARK</span>
+            <span>Fuld portfolio på vej</span>
+        </footer>
+
+        <!-- Det åbne postkort -->
+        <dialog class="bcn-dialog" id="bcnDialog" aria-labelledby="bcnDialogTitle">
+            <div class="bcn-card">
+                <button type="button" class="bcn-close" id="bcnClose" aria-label="Luk postkortet">×</button>
+                <div class="bcn-card-front">
+                    <div class="bcn-stage" id="bcnStage"></div>
+                    <div class="bcn-thumbs" id="bcnThumbs" role="group" aria-label="Vælg billede eller video"></div>
+                </div>
+                <div class="bcn-card-back">
+                    <div class="bcn-stamp" id="bcnStamp"></div>
+                    <p class="bcn-card-cat" id="bcnCat"></p>
+                    <h2 class="bcn-card-title" id="bcnDialogTitle"></h2>
+                    <p class="bcn-card-address" id="bcnAddress"></p>
+                    <div class="bcn-card-text" id="bcnText"></div>
+                    <div class="bcn-card-nav">
+                        <button type="button" class="bcn-card-step" id="bcnPrevPlace">← Forrige</button>
+                        <button type="button" class="bcn-card-step" id="bcnNextPlace">Næste →</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/barcelona-data.js"></script>
+    <script src="js/barcelona.js"></script>
+</body>
+</html>
