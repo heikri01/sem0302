@@ -3074,3 +3074,323 @@ a { color: inherit; }
 .timeline-item::before {
   z-index: 1;
 }
+
+/* ---- Om mig: CV-kort med miniature af PDF'en (om-mig.html) ---- */
+
+.cv-section {
+  animation: dcFadeUp .8s ease .22s both;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: clamp(24px, 4vw, 36px);
+}
+
+.cv-card {
+  --accent: var(--forbind);
+  --accent-fill: var(--forbind-fill);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--chip-border);
+  border-radius: 18px;
+  padding: clamp(18px, 2.6vw, 24px);
+  transition: border-color .3s ease, background-color .3s ease, transform .3s ease;
+}
+
+.cv-card.is-forsta  { --accent: var(--forsta);  --accent-fill: var(--forsta-fill); }
+.cv-card.is-forbind { --accent: var(--forbind); --accent-fill: var(--forbind-fill); }
+
+.cv-card:hover,
+.cv-card:focus-visible {
+  border-color: var(--accent);
+  background-color: var(--accent-fill);
+  transform: translateY(-2px);
+}
+
+.cv-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Miniaturen ligger som et ark papir på bordet — en hårlinje, ingen skygge */
+.cv-thumb {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+  aspect-ratio: 210 / 297;
+  transform: rotate(-1.2deg);
+  transition: transform .35s ease, border-color .3s ease;
+}
+
+.cv-card.is-forsta .cv-thumb { transform: rotate(1.2deg); }
+
+.cv-card:hover .cv-thumb,
+.cv-card:focus-visible .cv-thumb {
+  transform: rotate(0deg) scale(1.02);
+  border-color: var(--accent);
+}
+
+.cv-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-card-label {
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cv-card-title {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: clamp(24px, 3vw, 30px);
+  color: var(--accent);
+}
+
+.cv-card-text {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cv-card-open {
+  align-self: flex-start;
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-section { animation: none; }
+  .cv-card, .cv-thumb { transition: none; }
+  .cv-card:hover, .cv-card:focus-visible { transform: none; }
+}
+
+/* ---- Om mig: intro, sektioner, styrker, Nala og kontakt (om-mig.html) ---- */
+
+.main-about {
+  max-width: 980px;
+}
+
+.about-hero {
+  grid-template-columns: minmax(0, 1fr) clamp(180px, 24vw, 300px);
+}
+
+/* Det ægte foto fra CV'erne: rund beskæring med terracotta-ring som på multimedie-CV'et */
+.about-photo {
+  background: var(--forsta-fill);
+  box-shadow: none;
+  outline: 2px solid var(--forbind);
+  outline-offset: 6px;
+}
+
+.about-photo img {
+  object-position: 50% 30%;
+}
+
+.about-section {
+  --accent: var(--forbind);
+  margin-top: clamp(56px, 8vw, 88px);
+}
+
+.about-section.is-forsta { --accent: var(--forsta); }
+.about-section.is-forbind { --accent: var(--forbind); }
+.about-section.is-forme { --accent: var(--forme); }
+
+.about-num {
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: clamp(28px, 3.6vw, 38px);
+  color: var(--accent);
+}
+
+.about-text {
+  max-width: 62ch;
+}
+
+.about-text p {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.about-text strong {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.about-quote {
+  border-left-color: var(--accent);
+}
+
+/* Styrker (VIA) */
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(18px, 2.6vw, 26px);
+  margin-top: clamp(24px, 4vw, 32px);
+}
+
+.strength-box {
+  border: 1px solid var(--chip-border);
+  border-radius: 18px;
+  padding: clamp(20px, 2.8vw, 26px);
+}
+
+.strength-box.is-top {
+  border-color: var(--accent);
+  background: var(--forme-fill);
+}
+
+.strength-title {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.strength-title span {
+  margin-left: 8px;
+  color: var(--muted);
+}
+
+.strength-box.is-bottom .strength-title {
+  color: var(--muted);
+}
+
+.strength-note {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.strength-list {
+  margin: 16px 0 0;
+  padding-left: 2.2em;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: clamp(19px, 2.2vw, 22px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.strength-list li::marker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.strength-box.is-bottom .strength-list {
+  color: var(--muted);
+}
+
+.team-roles {
+  margin-top: clamp(28px, 4vw, 36px);
+}
+
+.team-roles .chip-row {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-roles .chip-row-item {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+/* Nala */
+.nala {
+  display: grid;
+  grid-template-columns: clamp(180px, 28vw, 280px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 44px);
+  align-items: start;
+  margin-top: clamp(20px, 3vw, 28px);
+}
+
+.nala .about-text p:first-child {
+  margin-top: 0;
+}
+
+.nala-photo {
+  margin: 0;
+  transform: rotate(-1.5deg);
+}
+
+.nala-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--chip-border);
+}
+
+.nala-photo figcaption {
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .nala {
+    grid-template-columns: 1fr;
+  }
+  .nala-photo {
+    width: min(70vw, 260px);
+  }
+}
+
+/* Kontakt */
+.about-cta {
+  margin-top: clamp(56px, 8vw, 88px);
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--forbind);
+  border-radius: 18px;
+  background: var(--forbind-fill);
+}
+
+.about-cta p {
+  margin: 14px 0 0;
+  max-width: 58ch;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.about-cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin-top: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nala-photo { transform: none; }
+}
