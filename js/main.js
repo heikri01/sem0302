@@ -439,3 +439,72 @@
     }).observe(footer);
   }
 })();
+
+/* ------------------------------------------------------------------
+   Case studies — klik på et billede for at se det i fuld størrelse
+   (afslut, 30/9). Mange billeder (flowcharts, tabeller, skærmbilleder)
+   er for små til at kunne læses i layoutet. Et klik (eller Enter/
+   mellemrum med tastaturet) åbner billedet stort i en <dialog>.
+   Esc, klik udenfor eller "Luk" lukker igen.
+------------------------------------------------------------------- */
+(function () {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.main img.img-photo'));
+  if (!imgs.length || typeof HTMLDialogElement === 'undefined') return;
+
+  var dialog = document.createElement('dialog');
+  dialog.className = 'lightbox';
+  dialog.setAttribute('aria-label', 'Billede i fuld størrelse');
+  dialog.innerHTML =
+    // Luk-knappen sidder lige over billedets højre hjørne, så den er inden for rækkevidde
+    '<figure class="lightbox-figure">' +
+    '<button type="button" class="lightbox-close">Luk <span aria-hidden="true">✕</span></button>' +
+    '<img class="lightbox-img" alt=""><figcaption class="lightbox-caption"></figcaption></figure>';
+  document.body.appendChild(dialog);
+
+  var bigImg = dialog.querySelector('.lightbox-img');
+  var caption = dialog.querySelector('.lightbox-caption');
+  var lastFocus = null;
+
+  function captionFor(img) {
+    // Billedteksten står typisk lige efter billedet i samme boks
+    var el = img.nextElementSibling;
+    while (el && !el.classList.contains('img-caption')) el = el.nextElementSibling;
+    return el ? el.textContent.trim() : '';
+  }
+
+  function open(img) {
+    lastFocus = img;
+    bigImg.src = img.currentSrc || img.src;
+    bigImg.alt = img.alt;
+    var text = captionFor(img);
+    caption.textContent = text;
+    caption.hidden = !text;
+    dialog.showModal();
+  }
+
+  function close() {
+    dialog.close();
+  }
+
+  dialog.addEventListener('close', function () {
+    bigImg.removeAttribute('src');
+    if (lastFocus) lastFocus.focus();
+  });
+
+  // Klik udenfor billedet (på den mørke baggrund) lukker
+  dialog.addEventListener('click', function (e) {
+    if (e.target === dialog || e.target.classList.contains('lightbox-figure')) close();
+  });
+  dialog.querySelector('.lightbox-close').addEventListener('click', close);
+
+  imgs.forEach(function (img) {
+    img.classList.add('is-zoomable');
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Forstør billede: ' + (img.alt || captionFor(img) || 'billede'));
+    img.addEventListener('click', function () { open(img); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+    });
+  });
+})();
