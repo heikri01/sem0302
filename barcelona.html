@@ -12,13 +12,17 @@
 </head>
 <body>
     <div class="page dark" id="page">
+        <a class="skip-link" href="#indhold">Spring til indhold</a>
         <div class="grid-overlay"></div>
         <div class="glow" id="glow"></div>
 
         <header class="header">
             <a class="brand" href="index.html" title="Til forsiden">
-                <span class="status-dot"></span>
-                <span>HDK — Multimediedesigner</span>
+                <span class="brand-mark">
+                    <img class="brand-logo brand-logo-dark" src="img/hdk-logo-moerkt-tema.svg" alt="" width="91" height="30">
+                    <img class="brand-logo brand-logo-light" src="img/hdk-logo-lyst-tema.svg" alt="" width="91" height="30">
+                </span>
+                <span class="sr-only">HDK — Multimediedesigner</span>
             </a>
             <nav class="site-nav" aria-label="Hovednavigation">
                 <a href="rejsen.html" class="active">Rejsen</a>
@@ -32,7 +36,7 @@
             </button>
         </header>
 
-        <main class="main main-wide">
+        <main id="indhold" tabindex="-1" class="main main-wide">
             <p class="eyebrow">Studietur · 2. semester · 22.–27. marts 2026</p>
             <h1 class="title">Postkort fra Barcelona</h1>
             <p class="manifest">En uge med designskoler, bureauer, Gaudí og Banksy — og første gang, online studerende var med på turen. Før musen hen over kortet, så popper postkortene frem. Klik for at åbne dem.</p>

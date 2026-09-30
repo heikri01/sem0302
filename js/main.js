@@ -7,9 +7,14 @@
 
   // Skattekisten til det sidste fund. Stien regnes ud fra, hvor main.js
   // ligger, så den virker både på forsiden og inde i case-studies/.
+  // Diamanten ved hvert fund hentes på samme måde.
   var CHEST_SRC = 'img/skattekiste.svg';
+  var GEM_SRC = 'img/diamant.svg';
   try {
-    if (document.currentScript) CHEST_SRC = new URL('../img/skattekiste.svg', document.currentScript.src).href;
+    if (document.currentScript) {
+      CHEST_SRC = new URL('../img/skattekiste.svg', document.currentScript.src).href;
+      GEM_SRC = new URL('../img/diamant.svg', document.currentScript.src).href;
+    }
   } catch (e) {}
 
   var dark = true;
@@ -123,7 +128,8 @@
     if (isFinale) {
       html += '<span class="skat-chest-wrap"><img class="skat-chest" src="' + CHEST_SRC + '" alt=""></span>';
     }
-    html += '<span class="skat-label">' + label + '</span>';
+    var gem = isFinale ? '' : '<img class="skat-gem" src="' + GEM_SRC + '" alt="">';
+    html += '<span class="skat-label">' + gem + label + '</span>';
     for (var i = 0; i < skat.length; i++) html += '<p>' + skat[i] + '</p>';
     reveal.innerHTML = html;
 
@@ -142,7 +148,16 @@
   // siden), åbner den UNDER i stedet — og den skubbes ind fra siderne,
   // så den aldrig går ud over skærmkanten.
   var EDGE = 16;       // luft til skærmkanten
-  var TOP_SPACE = 80;  // plads til navigationen øverst
+  var header = document.querySelector('.header');
+
+  // Hvor langt ned på skærmen headeren når lige nu. Den er sticky på
+  // desktop, så fund og bokse skal holde sig under den.
+  function headerBottom() {
+    if (!header) return 0;
+    var pos = getComputedStyle(header).position;
+    if (pos !== 'sticky' && pos !== 'fixed') return 0;
+    return Math.max(0, header.getBoundingClientRect().bottom);
+  }
 
   function place(spot) {
     var reveal = spot.querySelector('.hotspot-reveal');
@@ -151,7 +166,7 @@
     var w = reveal.offsetWidth;
     var h = reveal.offsetHeight;
 
-    spot.classList.toggle('reveal-below', rect.top - h - 14 < TOP_SPACE);
+    spot.classList.toggle('reveal-below', rect.top - h - 14 < headerBottom() + EDGE);
 
     var cx = rect.left + rect.width / 2;
     var vw = document.documentElement.clientWidth;
@@ -165,6 +180,8 @@
   // nede på siden (fx en animeret overskrift) blive tegnet oven på boksen.
   // Derfor løftes punktets forældre-elementer midlertidigt, og sættes
   // tilbage igen, når fundet lukkes.
+  // OBS: løftet (15) skal være LAVERE end headerens z-index (20) — ellers
+  // kommer hele indholdet (billeder, bobler, boksen) op over navigationen.
   function raise(spot, on) {
     var el = spot.parentElement;
     while (el && el !== page && el !== document.body) {
@@ -173,7 +190,7 @@
           el.style.position = 'relative';
           el.setAttribute('data-skat-pos', '');
         }
-        el.style.zIndex = '30';
+        el.style.zIndex = '15';
       } else {
         el.style.zIndex = '';
         if (el.hasAttribute('data-skat-pos')) {
@@ -237,19 +254,32 @@
   // Mus: et fund "tændes", når lyskeglen kommer tæt nok på.
   var LIGHT_RADIUS = 70;
 
+  var pointer = null;   // musens seneste position (til genberegning ved scroll)
+
   function checkHotspots(x, y) {
+    var top = headerBottom();
     hotspots.forEach(function (spot) {
       var rect = spot.getBoundingClientRect();
       var cx = rect.left + rect.width / 2;
       var cy = rect.top + rect.height / 2;
-      var lit = Math.hypot(x - cx, y - cy) < LIGHT_RADIUS;
+      // Et punkt, der er scrollet ind under headeren, kan ikke findes
+      // (ellers tændes det, når man bare bruger menuen).
+      var lit = cy > top && y > top && Math.hypot(x - cx, y - cy) < LIGHT_RADIUS;
       if (lit !== spot.classList.contains('is-lit')) setLit(spot, lit);
     });
   }
 
   window.addEventListener('pointermove', function (e) {
     if (glow) glow.style.transform = 'translate3d(' + e.clientX + 'px, ' + e.clientY + 'px, 0)';
-    if (hotspots.length) checkHotspots(e.clientX, e.clientY);
+    if (e.pointerType === 'touch') return;   // touch bruger tryk (se ovenfor)
+    pointer = { x: e.clientX, y: e.clientY };
+    if (hotspots.length) checkHotspots(pointer.x, pointer.y);
+  }, { passive: true });
+
+  // Scroller man uden at flytte musen, flytter punkterne sig under den —
+  // så tjekkes der igen, og et åbent fund lukker, når det forlader lyset.
+  window.addEventListener('scroll', function () {
+    if (pointer && hotspots.length) checkHotspots(pointer.x, pointer.y);
   }, { passive: true });
 })();
 
