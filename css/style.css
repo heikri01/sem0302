@@ -1028,6 +1028,13 @@ a { color: inherit; }
   background: var(--forbind);
 }
 
+/* Gemini: hul prik i terracotta — samme greb som Cowork, så den kan
+   skelnes fra ChatGPT uden at indføre en ny farve (1/10) */
+.ai-log-dot-gemini {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--forbind);
+}
+
 .ai-log-formaal {
   font-size: 15.5px;
   color: var(--ink);
