@@ -359,3 +359,53 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
 })();
 
+/* ------------------------------------------------------------------
+   Sticky header + "tilbage til toppen"-pil  (branch: sticky-nav)
+
+   Pilen bygges her, så den automatisk kommer med på alle sider,
+   der henter main.js. Den dukker op, når man har scrollet ca. en
+   skærmhøjde ned, og sender én tilbage til toppen — tastaturfokus
+   flyttes også op, så man kan tabbe videre fra navigationen.
+   ------------------------------------------------------------------ */
+(function () {
+  var page = document.querySelector('.page');
+  var header = document.querySelector('.header');
+  var footer = document.querySelector('.footer');
+  if (!page) return;
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.setAttribute('aria-label', 'Tilbage til toppen');
+  btn.title = 'Tilbage til toppen';
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>';
+  page.appendChild(btn);
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    // Flyt fokus til toppen, så tastatur- og skærmlæserbrugere også er "oppe".
+    var target = header || page;
+    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  });
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    if (header) header.classList.toggle('is-scrolled', y > 24);
+    btn.classList.toggle('is-visible', y > window.innerHeight * 0.9);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // Når footeren er i syne, løftes pilen, så den ikke dækker ikonerne.
+  if (footer && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      page.style.setProperty('--footer-h', footer.offsetHeight + 'px');
+      page.classList.toggle('footer-in-view', entries[0].isIntersecting);
+    }).observe(footer);
+  }
+})();

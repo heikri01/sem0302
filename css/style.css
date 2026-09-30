@@ -4,6 +4,13 @@
   --font-display: 'Chelsea Market', system-ui, cursive;
   --font-display-weight: 400;
 
+  /* Sitets "ramme": header, footer og pilen holder sig inden for samme
+     bredde som case studiernes indhold, så intet flyder ud i hjørnerne
+     på store skærme. */
+  --frame: 1160px;
+  --gutter: clamp(20px, 6vw, 88px);
+  --frame-inset: max(0px, (100% - var(--frame)) / 2);
+
   --light-bg: #F6F1EA;
   --dark-bg: #141210;
 
@@ -56,6 +63,7 @@ a { color: inherit; }
   isolation: isolate; /* lyskegle og gitter kan ligge bag alt indhold */
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-x: clip; /* 'clip' i stedet for 'hidden', så den faste (sticky) header virker */
   background: var(--bg);
   color: var(--ink);
   transition: background .5s ease, color .5s ease;
@@ -207,7 +215,7 @@ a { color: inherit; }
   flex-direction: column;
   justify-content: center;
   padding: clamp(24px, 5vw, 40px) clamp(20px, 6vw, 88px) clamp(48px, 8vw, 96px);
-  max-width: 1360px;
+  max-width: var(--frame); /* samme ramme som header og footer (før 1360px) */
   width: 100%;
   margin: 0 auto;
 }
@@ -296,7 +304,10 @@ a { color: inherit; }
 .bubble-wrap {
   position: relative;
   width: 100%;
-  max-width: 1040px;
+  /* Boblernes størrelse: gør max-width mindre/større for at skalere alle
+     tre på én gang (placering og overlap følger med, da de er i %).
+     Var 1040px (i praksis 984px, pga. sidens ramme). */
+  max-width: 880px;
   margin: clamp(40px, 7vw, 72px) auto 0;
   aspect-ratio: 860 / 450;
   animation: dcFadeUp .9s ease .2s both;
@@ -392,21 +403,21 @@ a { color: inherit; }
 
 .bubble-01 {
   --accent: var(--forsta);
-  left: 0; top: 31%; width: 33.7%;
+  left: 0; top: 31%; width: 31.7%;
   background: var(--forsta-fill); border: 1px solid var(--forsta);
   z-index: 1;
 }
 
 .bubble-02 {
   --accent: var(--forbind);
-  left: 29%; top: 19%; width: 41.9%;
+  left: 28.5%; top: 19%; width: 39.5%;
   background: var(--forbind-fill); border: 1px solid var(--forbind);
   z-index: 2;
 }
 
 .bubble-03 {
   --accent: var(--forme);
-  left: 63.6%; top: 5%; width: 32.6%;
+  left: 63.6%; top: 5%; width: 33.6%;
   background: var(--forme-fill); border: 1px solid var(--forme);
   z-index: 1;
 }
@@ -2938,7 +2949,10 @@ a { color: inherit; }
 }
 
 .reflect-portrait {
-  margin: 24px 0 0;
+  /* Overskriften ligger nu i venstre kolonne sammen med teksten.
+     30px = emne-labelens højde (16px) + afstand (14px), så billedets
+     top flugter med overskriftens top. */
+  margin: 30px 0 0;
 }
 
 .reflect-portrait img {
@@ -3393,4 +3407,218 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .nala-photo { transform: none; }
+}
+
+/* ------------------------------------------------------------------
+   Sticky header + "tilbage til toppen"  (branch: sticky-nav)
+   ------------------------------------------------------------------ */
+
+/* Ankerlinks (fx spread-navigationen i case studies) lander under
+   headeren i stedet for at blive gemt bag den. */
+html { scroll-padding-top: 88px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: padding .3s ease, border-color .3s ease, background .5s ease;
+}
+
+/* Når man har scrollet lidt, bliver headeren lavere og får en fin streg. */
+.header.is-scrolled {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-bottom-color: var(--chip-border);
+}
+
+/* På mobil fylder headeren flere linjer, så her følger den med
+   siden som før — pilen klarer turen tilbage til toppen. */
+@media (max-width: 760px) {
+  html { scroll-padding-top: 16px; }
+  .header { position: relative; }
+}
+
+/* Pilen "tilbage til toppen" — oprettes af js/main.js på alle sider */
+.to-top {
+  position: fixed;
+  right: calc(var(--frame-inset) + clamp(16px, 2vw, 24px));
+  bottom: clamp(16px, 3vw, 32px);
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  /* Lysere end baggrunden, så pilen kan ses, også når den ligger over indhold */
+  border: 1px solid color-mix(in srgb, var(--ink) 38%, var(--bg));
+  border-radius: 50%;
+  background: #2E2925;
+  background: color-mix(in srgb, var(--ink) 16%, var(--bg));
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, .6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s,
+              border-color .25s ease, background .5s ease, color .5s ease;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .3s ease, transform .3s ease, visibility 0s,
+              border-color .25s ease, background .5s ease, color .5s ease;
+}
+
+.to-top:hover {
+  border-color: var(--forbind);
+  background: color-mix(in srgb, var(--forbind) 28%, var(--bg));
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.to-top svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .25s ease;
+}
+
+.to-top:hover svg { transform: translateY(-2px); }
+
+/* Løft pilen op over footerens ikoner, når man er helt nede. */
+.page.footer-in-view .to-top { bottom: calc(var(--footer-h, 72px) + 12px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .header, .to-top, .to-top svg { transition: none; }
+}
+
+.header:focus { outline: none; } /* får kun fokus, når pilen sender én op */
+
+/* ---- Case studies: afsnitsnummer i samme stil som Om mig (branch: sticky-nav) ----
+   Erstatter den gamle "Spread 04 · …"-label: stort tal i overskriftsfonten,
+   emnet som lille label over overskriften (kun hvis det adskiller sig fra den). */
+.spread-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(14px, 2.4vw, 24px);
+  align-items: baseline;
+}
+
+/* Emne-labelen ligger over begge, tal og overskrift står på samme linje. */
+.spread-head-text { display: contents; }
+
+.spread-head .spread-eyebrow {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  line-height: 16px;
+  margin-bottom: 14px;
+}
+
+.spread-num {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1;
+  color: var(--forbind);
+}
+
+.spread-head .spread-title {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 0;
+}
+
+/* ---- Header og footer inden for rammen (branch: sticky-nav) ----
+   Baggrund/streg går stadig i fuld bredde, men navn, menu, tema-knap,
+   "Viby Sjælland" og SoMe-ikonerne flugter med indholdet. */
+.header,
+.footer {
+  padding-left: calc(var(--frame-inset) + var(--gutter));
+  padding-right: calc(var(--frame-inset) + var(--gutter));
+}
+
+/* ---- "Gå direkte til"-navigationen i case studies ---- */
+.spread-nav {
+  align-items: center;
+  gap: 8px;
+  padding: 16px 18px;
+}
+
+.spread-nav-label {
+  margin-right: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spread-nav .spread-nav-item {
+  min-width: 0;
+  height: auto;
+  padding: 7px 13px;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.spread-nav .spread-nav-item:hover,
+.spread-nav .spread-nav-item:focus-visible {
+  border-color: var(--forbind);
+  background: var(--forbind-fill);
+  color: var(--ink);
+}
+
+.spread-nav .spread-nav-item:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ---- Navnet oppe i venstre hjørne er link til forsiden (branch: sticky-nav) ----
+   "Forside" er fjernet fra menuen. */
+.brand {
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.brand span:last-child {
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s ease;
+}
+
+.brand:hover span:last-child,
+.brand[aria-current="page"] span:last-child {
+  border-bottom-color: var(--forbind);
+}
+
+.brand:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
 }
