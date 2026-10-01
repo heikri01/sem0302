@@ -3922,3 +3922,41 @@ main:focus { outline: none; } /* får kun fokus via "Spring til indhold" */
 @media (prefers-reduced-motion: reduce) {
   .img-photo.is-zoomable { transition: none; }
 }
+
+/* ---- Barcelona: nyhedsbrevet som lille "skærm" ved afslutningen (1/10) ----
+   Samme kort som GLS AI Playbook på Rejsen (.snap-card). Nyhedsbrevet er
+   én lang side, så ved hover/fokus ruller "skærmen" langsomt ned gennem det. */
+.bcn-closing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  column-gap: clamp(28px, 5vw, 56px);
+  align-items: start;
+}
+
+.bcn-closing .snap-card {
+  margin-top: 6px; /* finjustér her, hvis kortet skal flugte anderledes */
+}
+
+.snap-thumb.is-scroll img {
+  object-position: 50% 0%;
+  transition: object-position 9s linear;
+}
+
+.snap-card:hover .snap-thumb.is-scroll img,
+.snap-card:focus-visible .snap-thumb.is-scroll img {
+  object-position: 50% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snap-thumb.is-scroll img { transition: none; }
+  .snap-card:hover .snap-thumb.is-scroll img,
+  .snap-card:focus-visible .snap-thumb.is-scroll img { object-position: 50% 0%; }
+}
+
+@media (max-width: 700px) {
+  .bcn-closing { grid-template-columns: 1fr; }
+  .bcn-closing .snap-card {
+    margin-top: 28px;
+    max-width: 260px;
+  }
+}

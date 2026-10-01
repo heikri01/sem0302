@@ -12,7 +12,7 @@
  *       til, skal det have en filterknap i ai-log.html og en prik
  *       (.ai-log-dot-<tool>) i css/style.css.
  *
- * Senest synkroniseret: 1/10 2026 (33 poster).
+ * Senest synkroniseret: 1/10 2026 (34 poster).
  */
 window.AI_LOG_DATA = [
   {
@@ -311,5 +311,14 @@ window.AI_LOG_DATA = [
     prompt: 'Tjek for dubletter, sorter og ryd op',
     output: 'Overskueligt opsamling af ideer, beslutninger, planer og pointer',
     bearbejdning: 'Gennemlæst og sammenskrevet til paper'
+  },
+  {
+    dato: '2026-10-01',
+    ai: 'ChatGPT',
+    tool: 'chatgpt',
+    formaal: 'Få paper færdig',
+    prompt: 'Opsamlingsdokument, projektbeskrivelse, eget udkast',
+    output: 'Revideret udkast',
+    bearbejdning: 'Læst igennem og opdateret'
   }
 ];
